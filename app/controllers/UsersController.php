@@ -27,18 +27,99 @@ class UsersController extends Controller
             'email' => $_POST['email'],
             'password' => $_POST['password']
         ];
-        var_dump($data);
     }
 
 
-    // Method for navigate To SignUp page
+    // Method for navigate To SignUp page And Take Too Getters Method One For Areas And The Seconde For Cities
     public function signUp() {
-        $this->view('users/sign_up');
+        $areas = $this->userModel->getArea();
+        $cities = $this->userModel->getCities();
+        $this->view('users/sign_up', $areas, $cities);
     }
 
 
     // Take The Data From The Form
-    
+    public function stepOneInsertUser() {
+        $data = [
+            'sexe' => $_POST['sexe'],
+            'lName' => $_POST['lName'],
+            'fName' => $_POST['fName'],
+            'activity' => $_POST['activity'],
+            'date_birth' => $_POST['date_birth'],
+            'email' => $_POST['email'],
+            'phone' => $_POST['phone'],
+            'zip_code' => $_POST['zip_code'],
+            'address' => $_POST['address'],
+            'country' => $_POST['country'],
+            'city' => $_POST['city'],
+            'name_file' => $_FILES['name_file'],
+            'error_sexe' => '',
+            'error_lName' => '',
+            'error_fName' => '',
+            'error_activity' => '',
+            'error_date_birth' => '',
+            'error_email' => '',
+            'error_phone' => '',
+            'error_zip_code' => '',
+            'error_address' => '',
+            'error_country' => '',
+            'error_city' => '',
+            'error_name_file' => '',
+            'error_message' => ''
+        ];
+
+
+        // Prepare The Errors Where The Inputs Are Empty
+        if ($data['sexe'] === 'null') {
+            $data['error_sexe'] = "Choisir s'il vous plaît";
+        }
+        if (empty($data['lName'])) {
+            $data['error_lName'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['fName'])) {
+            $data['error_fName'] = "Remplir le champ s'il vous plaît";
+        }
+        if ($data['activity'] === 'null') {
+            $data['error_activity'] = "Choisir s'il vous plaît";
+        }
+        if (empty($data['date_birth'])) {
+            $data['error_date_birth'] = "Choisir un date s'il vous plaît";
+        }
+        if (empty($data['email'])) {
+            $data['error_email'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['phone'])) {
+            $data['error_phone'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['zip_code'])) {
+            $data['error_zip_code'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['address'])) {
+            $data['error_address'] = "Remplir le champ s'il vous plaît";
+        }
+        if ($data['country'] === 'null') {
+            $data['error_country'] = "Choisir s'il vous plaît";
+        }
+        if ($data['city'] === 'null') {
+            $data['error_city'] = "Remplir le champ s'il vous plaît";
+        }
+        if ($data['name_file'] === 'null') {
+            $data['error_name_file'] = "Choisir un fichier le champ s'il vous plaît";
+        }
+
+        // If All The Inputs Are Not Empty
+        if (empty($data['error_sexe']) && empty($data['error_lName']) && empty($data['error_fName']) && empty($data['error_activity']) && empty($data['error_date_birth']) && empty($data['error_email']) && empty($data['error_phone']) && empty($data['error_zip_code']) && empty($data['error_error_address']) && empty($data['error_country']) && empty($data['error_city']) && empty($data['error_name_file'])) {
+
+            $this->view('users/sign_upPart2', $data);
+
+        }else {
+            $data['error_message'] = "S'il vous plaît remplir les champs c'est obligatoire";
+            $this->view('users/sign_up', $data);
+
+        }
+
+
+    }
 
 
 
