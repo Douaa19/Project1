@@ -122,6 +122,31 @@ class UsersController extends Controller
     }
 
 
+    // Method For Take The Informations From Diplomas Form
+    public function diplomas() {
+        $data = [
+            'name_diploma' => $_POST['name_diploma'],
+            'level' => $_POST['level'],
+            'date_diploma' => $_POST['date_diploma'],
+            'etablissement' => $_POST['etablissement'],
+            'subject' => $_POST['subject'],
+            'error_name_diploma' => '',
+            'error_level' => '',
+            'date_diploma' => '',
+            'etablissement' => '',
+            'subject' => ''
+        ];
+
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+
+        if () {
+            
+        }
+    }
+
+
 
 
 
