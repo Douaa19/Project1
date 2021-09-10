@@ -1,6 +1,7 @@
-<!-- <?php //echo '<pre>';
-    //var_dump($data);
-    //echo '</pre>'; ?>-->
+<!-- <?php
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>'; ?> -->
     
 
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
@@ -15,15 +16,15 @@
                     <tbody>
                         <tr>
                             <td>
-                                <label for="diploma">Diplôme: <span     class="text-danger">*</span></label>
+                                <label for="diploma" <?php if(empty($data['name_diploma'])) : ?> class="text-danger" <?php endif; ?>>Diplôme: <span class="text-danger">*</span></label>
                             </td>
                             <td>
-                                <input type="text" name="name_diploma"  id="diploma">
+                                <input type="text" name="name_diploma" id="diploma">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label for="level">Niveau: <span    class="text-danger">*</span></label>
+                                <label for="level" <?php if(empty($data['level'])) : ?> class="text-danger" <?php endif; ?>>Niveau: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <input type="text" name="level" id="level">
@@ -31,7 +32,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="date_diploma">Date Diplôme: <span   class="text-danger">*</span></label>
+                                <label for="date_diploma" <?php if(empty($data['date_diploma'])) : ?> class="text-danger" <?php endif; ?>>Date Diplôme: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <input type="date" name="date_diploma"  id="date_diploma">
@@ -39,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="etablissement">Etablissement:  <span class="text-danger">*</span></label>
+                                <label for="etablissement" <?php if(empty($data['etablissement'])) : ?> class="text-danger" <?php endif; ?>>Etablissement: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <textarea name="etablissement" id="etablissement" cols="30" rows="5"></textarea>
@@ -47,16 +48,16 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="subject">Sujet: <span   class="text-danger">*</span></label>
+                                <label for="subject" <?php if(empty($data['subject'])) : ?> class="text-danger" <?php endif; ?>>Sujet: <span class="text-danger">*</span></label>
                             </td>
                             <td>
-                                <textarea name="subject" id="subject"   cols="30" rows="5"></textarea>
+                                <textarea name="subject" id="subject" cols="30" rows="5"></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <button type="submit" class="btn btn-success    text-light">Ajouter</button>
+                                <button type="submit" class="btn btn-success text-light">Ajouter</button>
                             </td>
                         </tr>
                     </tbody>

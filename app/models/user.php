@@ -35,4 +35,30 @@ class user
             return false;
         }
     }
+
+
+    // Add New User
+    public function addUser($data) {
+        $this->db->query("INSERT INTO `users`(``, ``, ``, ``, ``, ``, ``, ``, ``, ``, ``) VALUES ");
+    }
+
+
+    // Add Diploma Into Database
+    public function addDiploma($data) {
+        $this->db->query("INSERT INTO `diplomas`(`name_diploma`, `level`, `data_diploma`, `etablissement`, `subject`) VALUES (:nama_diploma, :level, :date_diploma, :etablissement, :subject)");
+
+        // Binding Data
+        $this->db->bind(':name_diploma', $data['name_diploma']);
+        $this->db->bind(':level', $data['level']);
+        $this->db->bind(':data_diploma', $data['data_diploma']);
+        $this->db->bind(':etablissement', $data['etablissement']);
+        $this->db->bind(':subject', $data['subject']);
+
+        $result = $this->db->execute();
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
