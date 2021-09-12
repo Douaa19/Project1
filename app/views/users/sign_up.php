@@ -6,11 +6,11 @@
         <form action="<?php echo URLROOT; ?>/UsersController/stepOneInsertUser" method="post" class="" enctype="multipart/form-data">
             <table class="table">
                 <tbody>
-                  <!-- <tr>
+                  <tr>
                     
-                      <span class="text-danger error_message text-bold"><?php if(isset($data['error_message'])) { echo $data['error_message'];} ?></span>
+                      <span class="text-danger error_message text-center text-uppercase"><?php if(isset($data['error_message'])) { echo $data['error_message'];} ?></span>
                     
-                  </tr> -->
+                  </tr>
                   <tr>
                     <td class="row">
                     <label for="sexe" <?php if(!empty($data['error_sexe'])) : ?> class="text-danger" <?php endif; ?>>civilité: <span class="text-danger">*</span></label>

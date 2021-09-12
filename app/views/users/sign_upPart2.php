@@ -1,22 +1,23 @@
+<?php include_once APPROOT . '../views/inc/header.php'; ?>
+
 <!-- <?php
     echo '<pre>';
     var_dump($data);
-    echo '</pre>'; ?> -->
-    
-
-<?php include_once APPROOT . '../views/inc/header.php'; ?>
+    echo '</pre>';
+?> -->
 
 <main>
     <div class="container">
         <h1 class="text-uppercase">étape 2</h1>
         <div class="form_diploma">    
             <form action="<?php echo URLROOT; ?>/UserController/diplomas" method="post">
-                <h2 class="text-light bg-success p-2">Ajouter un ou plusieurs   diplômes</h2>
+                <h2 class="text-light bg-success p-2">Ajouter un ou plusieurs diplômes</h2>
                 <table class="table table-striped">
                     <tbody>
                         <tr>
+                                <input type="hidden" name="id_user" id="id_user" value="<?php echo $data->id_user; ?>">
                             <td>
-                                <label for="diploma" <?php if(empty($data['name_diploma'])) : ?> class="text-danger" <?php endif; ?>>Diplôme: <span class="text-danger">*</span></label>
+                                <label for="diploma" >Diplôme: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <input type="text" name="name_diploma" id="diploma">
@@ -24,7 +25,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="level" <?php if(empty($data['level'])) : ?> class="text-danger" <?php endif; ?>>Niveau: <span class="text-danger">*</span></label>
+                                <label for="level" >Niveau: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <input type="text" name="level" id="level">
@@ -32,15 +33,15 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="date_diploma" <?php if(empty($data['date_diploma'])) : ?> class="text-danger" <?php endif; ?>>Date Diplôme: <span class="text-danger">*</span></label>
+                                <label for="date_diploma" >Date Diplôme: <span class="text-danger">*</span></label>
                             </td>
                             <td>
-                                <input type="date" name="date_diploma"  id="date_diploma">
+                                <input type="date" name="date_diploma" id="date_diploma">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label for="etablissement" <?php if(empty($data['etablissement'])) : ?> class="text-danger" <?php endif; ?>>Etablissement: <span class="text-danger">*</span></label>
+                                <label for="etablissement" >Etablissement: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <textarea name="etablissement" id="etablissement" cols="30" rows="5"></textarea>
@@ -48,7 +49,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="subject" <?php if(empty($data['subject'])) : ?> class="text-danger" <?php endif; ?>>Sujet: <span class="text-danger">*</span></label>
+                                <label for="subject" >Sujet: <span class="text-danger">*</span></label>
                             </td>
                             <td>
                                 <textarea name="subject" id="subject" cols="30" rows="5"></textarea>

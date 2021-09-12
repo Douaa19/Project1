@@ -111,10 +111,23 @@ class UsersController extends Controller
         // If All The Inputs Are Not Empty
         if (empty($data['error_sexe']) && empty($data['error_lName']) && empty($data['error_fName']) && empty($data['error_activity']) && empty($data['error_date_birth']) && empty($data['error_email']) && empty($data['error_phone']) && empty($data['error_zip_code']) && empty($data['error_error_address']) && empty($data['error_country']) && empty($data['error_city']) && empty($data['error_name_file'])) {
 
-            $uploadFile = $this->uploadFiles($file);
-            if ($uploadFile) {
-                $this->userModel->addUser($data);
-                $this->view('users/sign_upPart2');
+            $user = $this->userModel->getUser($data);
+            if (!$user) {
+                $uploadFile = $this->uploadFiles($file);
+                if ($uploadFile) {
+                    if ($this->userModel->addUser($data)) {
+                        // header('Location: ' . URLROOT . '/UsersController/part2');
+                        $user = $this->userModel->getUser($data);
+                        $this->view('users/sign_upPart2', $user);
+                    }else {
+                        $this->view('users/sign_up?Infos Does Not Inserted');
+                    }
+                }else {
+                    $this->view('users/sign_up?The File Cannot Uploded');
+                }
+            }else {
+                $data['error_message'] = "This user is allready exists";
+                $this->view('users/sign_up', $data);
             }
             
 
@@ -169,6 +182,7 @@ class UsersController extends Controller
     // Method For Take The Informations From Diplomas Form
     public function diplomas() {
         $data = [
+            'id_user' => $_POST['id_user'],
             'name_diploma' => $_POST['name_diploma'],
             'level' => $_POST['level'],
             'date_diploma' => $_POST['date_diploma'],
@@ -199,11 +213,18 @@ class UsersController extends Controller
             $data['error_subject'] = "Remplir le champ s'il vous plaît";
         }
 
-        // Check If The Errors Are Empty For Complate The Methode Correctly
+        // Check If The Errors Are Empty For Complate The Methode 
         if (!empty($data['name_diploma']) && !empty($data['level']) && !empty($data['date_diploma']) && !empty($data['etablissement']) && !empty($data['subject'])) {
 
             $result = $this->userModel->addDiploma($data);
-            $this->view('users/sign_upPart2', $result);
+            if ($result) {
+                $diplomas = $this->userModel->getDiplomas($data);
+                $this->view('users/sign_upPart2', $diplomas);
+            }else {
+                $data['error_message'] = "You have error, the informations cannot insert";
+                $this->view('users/sign_upPart2');
+            }
+            
 
         }else {
             $this->view('users/sign_upPart2', $data);
