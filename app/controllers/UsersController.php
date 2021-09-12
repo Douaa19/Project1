@@ -40,6 +40,7 @@ class UsersController extends Controller
 
     // Take The Data From The Form
     public function stepOneInsertUser() {
+        $file = $_FILES['name_file'];
         $data = [
             'sexe' => $_POST['sexe'],
             'lName' => $_POST['lName'],
@@ -52,7 +53,7 @@ class UsersController extends Controller
             'address' => $_POST['address'],
             'country' => $_POST['country'],
             'city' => $_POST['city'],
-            'name_file' => $_FILES['name_file'],
+            'name_file' => $_FILES['name_file']['name'],
             'error_sexe' => '',
             'error_lName' => '',
             'error_fName' => '',
@@ -110,7 +111,12 @@ class UsersController extends Controller
         // If All The Inputs Are Not Empty
         if (empty($data['error_sexe']) && empty($data['error_lName']) && empty($data['error_fName']) && empty($data['error_activity']) && empty($data['error_date_birth']) && empty($data['error_email']) && empty($data['error_phone']) && empty($data['error_zip_code']) && empty($data['error_error_address']) && empty($data['error_country']) && empty($data['error_city']) && empty($data['error_name_file'])) {
 
-            $this->view('users/sign_upPart2', $data);
+            $uploadFile = $this->uploadFiles($file);
+            if ($uploadFile) {
+                $this->userModel->addUser($data);
+                $this->view('users/sign_upPart2');
+            }
+            
 
         }else {
             $data['error_message'] = "S'il vous plaît remplir les champs c'est obligatoire";
@@ -119,6 +125,44 @@ class UsersController extends Controller
         }
 
 
+    }
+
+
+    // Method For Uploading Files
+    public function uploadFiles($file) {
+        $fileName = $_FILES['name_file']['name'];
+        $fileTmpName = $_FILES['name_file']['tmp_name'];
+        $fileSize = $_FILES['name_file']['size'];
+        $fileError = $_FILES['name_file']['error'];
+        $fileType = $_FILES['name_file']['type'];
+
+        $fileExt= explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        // print_r($fileExt);
+        // die();
+        $allowed = array('doc','docx','pdf');
+
+        if (in_array($fileActualExt, $allowed)) {
+            if ($fileError === 0) {
+                if ($fileSize < 10000000) {
+                    $fileNameNew = uniqid($fileExt[0], true).".".$fileActualExt;
+                    $fileDestination = "C:\\xampp\htdocs\larmoProject1\public\uploads\\".$fileNameNew;
+
+                    if (file_exists($fileDestination . $fileTmpName)) {
+                        echo "This file is allredy exists";
+                    }else {
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                        return true;
+                    }
+                }else {
+                    echo "Your file is to big";
+                }
+            }else {
+                echo "There was an error uploading your file";
+            }
+        }else {
+            echo "You cannot upload files of this type";
+        }
     }
 
 
@@ -132,17 +176,37 @@ class UsersController extends Controller
             'subject' => $_POST['subject'],
             'error_name_diploma' => '',
             'error_level' => '',
-            'date_diploma' => '',
-            'etablissement' => '',
-            'subject' => ''
+            'error_date_diploma' => '',
+            'error_etablissement' => '',
+            'error_subject' => '',
+            'error_message' => ''
         ];
 
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
+        // Check The Inputs If Are Empty And Declare The Errors
+        if (!empty($data['error_name_diploma'])) {
+            $data['error_name_diploma'] = "Remplir le champ s'il vous plaît";
+        }
+        if (!empty($data['error_level'])) {
+            $data['error_level'] = "Remplir le champ s'il vous plaît";
+        }
+        if (!empty($data['error_date_diploma'])) {
+            $data['error_date_diploma'] = "Remplir le champ s'il vous plaît";
+        }
+        if (!empty($data['error_etablissement'])) {
+            $data['error_etablissement'] = "Remplir le champ s'il vous plaît";
+        }
+        if (!empty($data['error_subject'])) {
+            $data['error_subject'] = "Remplir le champ s'il vous plaît";
+        }
 
-        if () {
-            
+        // Check If The Errors Are Empty For Complate The Methode Correctly
+        if (!empty($data['name_diploma']) && !empty($data['level']) && !empty($data['date_diploma']) && !empty($data['etablissement']) && !empty($data['subject'])) {
+
+            $result = $this->userModel->addDiploma($data);
+            $this->view('users/sign_upPart2', $result);
+
+        }else {
+            $this->view('users/sign_upPart2', $data);
         }
     }
 
