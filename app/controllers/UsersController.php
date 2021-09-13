@@ -11,6 +11,7 @@ class UsersController extends Controller
     {
         //instanciation du model
         $this->userModel = $this->model('user');
+        $this->session = new Session;
     }
     
 
@@ -115,10 +116,13 @@ class UsersController extends Controller
             if (!$user) {
                 $uploadFile = $this->uploadFiles($file);
                 if ($uploadFile) {
+                    // $addUser = $this->userModel->addUser($data);
                     if ($this->userModel->addUser($data)) {
-                        // header('Location: ' . URLROOT . '/UsersController/part2');
+
                         $user = $this->userModel->getUser($data);
-                        $this->view('users/sign_upPart2', $user);
+                        $this->session->setSession('id_user',$user->id_user);
+                        $this->view('users/diplomas');
+                        
                     }else {
                         $this->view('users/sign_up?Infos Does Not Inserted');
                     }
@@ -180,7 +184,7 @@ class UsersController extends Controller
 
 
     // Method For Take The Informations From Diplomas Form
-    public function diplomas() {
+    public function addDiploma() {
         $data = [
             'id_user' => $_POST['id_user'],
             'name_diploma' => $_POST['name_diploma'],
@@ -216,19 +220,44 @@ class UsersController extends Controller
         // Check If The Errors Are Empty For Complate The Methode 
         if (!empty($data['name_diploma']) && !empty($data['level']) && !empty($data['date_diploma']) && !empty($data['etablissement']) && !empty($data['subject'])) {
 
-            $result = $this->userModel->addDiploma($data);
-            if ($result) {
+            if($this->userModel->addDiploma($data)) {
+
                 $diplomas = $this->userModel->getDiplomas($data);
-                $this->view('users/sign_upPart2', $diplomas);
+
+                $this->view('users/diplomas', $diplomas);
+
             }else {
-                $data['error_message'] = "You have error, the informations cannot insert";
-                $this->view('users/sign_upPart2');
+                $data['error_message'] = 'Diploma Cannot Insert';
+                $this->view('users/diplomas', $data);
             }
-            
+
+            // header('Location:' . URLROOT . '/UsersController/diplomas');
 
         }else {
-            $this->view('users/sign_upPart2', $data);
+            $this->view('users/diplomas', $data);
         }
+    }
+    
+
+
+    // Delete One Diploma
+    public function deleteDiploma() {
+        $data = [
+            'id_diploma' => $_POST['id_diploma'],
+            'id_user' => $_POST['id_user']
+        ];
+        // var_dump($data);
+        // die();
+
+        $result = $this->userModel->deleteDiploma($data);
+        if ($result) {
+            $diplomas = $this->userModel->getDiplomas($data);
+            $this->view('users/diplomas', $diplomas);
+        }else {
+            echo "Diploma cannot deleted";
+            $this->view('users/diplomas');
+        }
+        
     }
 
 
