@@ -94,10 +94,8 @@ class user
             $result = $this->db->execute();
             if ($result) {
                 return true;
-                die();
             }else {
                 return false;
-                die();
             }
         }
     }
@@ -114,6 +112,24 @@ class user
         $data = $this->db->single();
         if ($data) {
             return $data;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Get One Id User
+    public function getIdUser($data) {
+        $this->db->query("SELECT users.id_user FROM users WHERE email = :email AND fName = :fName AND lName = :lName");
+
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':fName', $data['fName']);
+        $this->db->bind(':lName', $data['lName']);
+        
+        $idUser = $this->db->single();
+        
+        if ($idUser) {
+            return $idUser;
         }else {
             return false;
         }
@@ -143,6 +159,30 @@ class user
 
     // Get All Diplomas
     public function getDiplomas($data) {
-        print_r($data);
+
+        $this->db->query("SELECT * FROM `diplomas` WHERE id_user = :id_user");
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $diplomas = $this->db->resultSet();
+
+        if ($diplomas) {
+            return $diplomas;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Delete Diploma 
+    public function deleteDiploma($data) {
+
+        $this->db->query("DELETE FROM `diplomas` WHERE id_diploma = :id_diploma");
+        $this->db->bind(':id_diploma', $data['id_diploma']);
+
+        if ($this->db->execute()) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
