@@ -10,10 +10,11 @@
                 <form action="<?php echo URLROOT; ?>/UserController/addDiploma" method="post">
                     <table class="table table-striped">
                         <tbody>
+                            <h6 class="text-danger"><?php if(isset($data['error_message'])) { echo '*' . $data['error_message'] . '*'; } ?></h6>
                             <tr>
                                     <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                                 <td>
-                                    <label for="diploma" >Diplôme: <span class="text-danger">*</span></label>
+                                    <label for="diploma" <?php if(!empty($data['error_name_diploma'])) : ?> class="text-danger" <?php endif; ?>>Diplôme: <span class="text-danger">*</span></label>
                                 </td>
                                 <td>
                                     <input type="text" name="name_diploma" id="diploma">
@@ -21,7 +22,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="level" >Niveau: <span class="text-danger">*</span></label>
+                                    <label for="level" <?php if(!empty($data['error_level'])) : ?> class="text-danger" <?php endif; ?>>Niveau: <span class="text-danger">*</span></label>
                                 </td>
                                 <td>
                                     <input type="text" name="level" id="level">
@@ -29,7 +30,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="date_diploma" >Date Diplôme: <span class="text-danger">*</span></label>
+                                    <label for="date_diploma" <?php if(!empty($data['error_date_diploma'])) : ?> class="text-danger" <?php endif; ?>>Date Diplôme: <span class="text-danger">*</span></label>
                                 </td>
                                 <td>
                                     <input type="date" name="date_diploma" id="date_diploma">
@@ -37,7 +38,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="etablissement" >Etablissement: <span class="text-danger">*</span></label>
+                                    <label for="etablissement" <?php if(!empty($data['error_etablissement'])) : ?> class="text-danger" <?php endif; ?>>Etablissement: <span class="text-danger">*</span></label>
                                 </td>
                                 <td>
                                     <textarea name="etablissement" id="etablissement" cols="30" rows="5"></textarea>
@@ -45,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="subject" >Sujet: <span class="text-danger">*</span></label>
+                                    <label for="subject" <?php if(!empty($data['error_subject'])) : ?> class="text-danger" <?php endif; ?>>Sujet: <span class="text-danger">*</span></label>
                                 </td>
                                 <td>
                                     <textarea name="subject" id="subject" cols="30" rows="5"></textarea>
@@ -60,39 +61,46 @@
                         </tbody>
                     </table>
                 </form>
-                <div class="diplomas">
-                    <?php if(!empty($data->id_diploma)) { ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Diplôme</th>
-                                <th>Date diplôme</th>
-                                <th>Niveau</th>
-                                <th>Etablissement</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($data as $diploma) : ?>
-                            <tr>
-                                <td><?= $diploma->name_diploma; ?></td>
-                                <td><?= $diploma->date_diploma; ?></td>
-                                <td><?= $diploma->level; ?></td>
-                                <td><?= $diploma->etablissement; ?></td>
-                                <td>
-                                    <form action="<?= URLROOT ?>/UsersController/deleteDiploma" method="post">
-                                        <input type="text" name="id_user" value="<?php echo $diploma->id_user; ?>">
-                                        <input type="text" name="id_diploma" value="<?php echo $diploma->id_diploma; ?>">
-                                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                <div class="diplomas mb-5 mt-3">
+                    
+                        <?php if (empty($data['id_diploma'])) {
+                        ?>
+                    
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Diplôme</th>
+                                    <th>Date diplôme</th>
+                                    <th>Niveau</th>
+                                    <th>Etablissement</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($data as $diploma) : ?>
+                                <tr>
+                                    <td><?= $diploma->name_diploma; ?></td>
+                                    <td><?= $diploma->date_diploma; ?></td>
+                                    <td><?= $diploma->level; ?></td>
+                                    <td><?= $diploma->etablissement; ?></td>
+                                    <td>
+                                        <form action="<?= URLROOT ?>/UsersController/deleteDiploma" method="post">
+                                            <input type="hidden" name="id_user" value="<?php echo $diploma->id_user; ?>">
+                                            <input type="hidden" name="id_diploma" value="<?php echo $diploma->id_diploma; ?>">
+                                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/experiencesPage">Suivant</a></button>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+</body>
+</html>

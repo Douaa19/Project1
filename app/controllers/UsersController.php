@@ -201,21 +201,22 @@ class UsersController extends Controller
         ];
 
         // Check The Inputs If Are Empty And Declare The Errors
-        if (!empty($data['error_name_diploma'])) {
+        if (empty($data['name_diploma'])) {
             $data['error_name_diploma'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_level'])) {
+        if (empty($data['level'])) {
             $data['error_level'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_date_diploma'])) {
+        if (empty($data['date_diploma'])) {
             $data['error_date_diploma'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_etablissement'])) {
+        if (empty($data['etablissement'])) {
             $data['error_etablissement'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_subject'])) {
+        if (empty($data['subject'])) {
             $data['error_subject'] = "Remplir le champ s'il vous plaît";
         }
+
 
         // Check If The Errors Are Empty For Complate The Methode 
         if (!empty($data['name_diploma']) && !empty($data['level']) && !empty($data['date_diploma']) && !empty($data['etablissement']) && !empty($data['subject'])) {
@@ -228,12 +229,13 @@ class UsersController extends Controller
 
             }else {
                 $data['error_message'] = 'Diploma Cannot Insert';
-                $this->view('users/diplomas', $data);
+                $this->view('users/diplomas');
             }
 
             // header('Location:' . URLROOT . '/UsersController/diplomas');
 
         }else {
+            $data['error_message'] = "You must fill up all the informations";
             $this->view('users/diplomas', $data);
         }
     }
@@ -246,8 +248,6 @@ class UsersController extends Controller
             'id_diploma' => $_POST['id_diploma'],
             'id_user' => $_POST['id_user']
         ];
-        // var_dump($data);
-        // die();
 
         $result = $this->userModel->deleteDiploma($data);
         if ($result) {
@@ -260,6 +260,32 @@ class UsersController extends Controller
         
     }
 
+
+    // Navigate To Expériences Page
+    public function experiencesPage() {
+        $this->view('users/experiencesPage');
+    }
+
+    
+    // Add Experiences Method
+    public function addExperience() {
+        $data = [
+            '' => $_POST[''],
+            '' => $_POST[''],
+            '' => $_POST[''],
+            '' => $_POST[''],
+            '' => $_POST[''],
+            '' => $_POST[''],
+            '' => $_POST[''],
+            'error_' => ,
+            'error_' => ,
+            'error_' => ,
+            'error_' => ,
+            'error_' => ,
+            'error_' => ,
+            'error_' => 
+        ];
+    }
 
 
 
