@@ -270,21 +270,68 @@ class UsersController extends Controller
     // Add Experiences Method
     public function addExperience() {
         $data = [
-            '' => $_POST[''],
-            '' => $_POST[''],
-            '' => $_POST[''],
-            '' => $_POST[''],
-            '' => $_POST[''],
-            '' => $_POST[''],
-            '' => $_POST[''],
-            'error_' => ,
-            'error_' => ,
-            'error_' => ,
-            'error_' => ,
-            'error_' => ,
-            'error_' => ,
-            'error_' => 
+            'id_user' => $_POST['id_user'],
+            'start_date' => $_POST['start_date'],
+            'end_date' => $_POST['end_date'],
+            'company' => $_POST['company'],
+            'type_contract' => $_POST['type_contract'],
+            'function' => $_POST['function'],
+            'area' => $_POST['area'],
+            'details' => $_POST['details'],
+            'error_start_date' => '',
+            'error_start_date' => '',
+            'error_company' => '',
+            'error_type_contract' => '',
+            'error_function' => '',
+            'error_area' => '',
+            'error_details' => ''
         ];
+
+        if (empty($data['start_date'])) {
+            $data['error_start_date'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['end_date'])) {
+            $data['error_end_date'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['company'])) {
+            $data['error_company'] = "Remplir le champ s'il vous plaît";
+        }
+        if ($data['type_contract'] === 'null') {
+            $data['error_type_contract'] = "Sélectionez s'il vous plaît";
+        }
+        if (empty($data['function'])) {
+            $data['error_function'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['area'])) {
+            $data['error_area'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['details'])) {
+            $data['error_details'] = "Remplir le champ s'il vous plaît";
+        }
+
+        if (empty($data['start_date']) || empty($data['end_date']) || empty($data['company']) || $data['type_contract'] === 'null' || empty($data['function']) || empty($data['area']) || empty($data['details'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $this->view('users/experiencesPage', $data);
+        }
+
+        if (!empty($data['start_date']) && !empty($data['end_date']) && !empty($data['company']) && $data['type_contract'] !== 'null' && !empty($data['function']) && !empty($data['area']) && !empty($data['details'])) {
+            
+            $addExperience = $this->userModel->addExperience($data);
+
+            if ($addExperience) {
+                $experiences = $this->userModel->getExperiences($data['id_user']);
+                $this->view('users/experiencesPage', $experiences);
+            }else {
+                $data['error_message'] = "Experience Cannot Insert";
+                $this->view('users/experiencesPage', $data);
+            }
+        }
+        
+
+        // echo '<pre>';
+        // var_dump($data);
+        // echo '</pre>';
+        // die();
     }
 
 
