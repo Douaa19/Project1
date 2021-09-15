@@ -319,7 +319,7 @@ class UsersController extends Controller
             $addExperience = $this->userModel->addExperience($data);
 
             if ($addExperience) {
-                $experiences = $this->userModel->getExperiences($data['id_user']);
+                $experiences = $this->userModel->getExperiences($data);
                 $this->view('users/experiencesPage', $experiences);
             }else {
                 $data['error_message'] = "Experience Cannot Insert";
@@ -332,6 +332,24 @@ class UsersController extends Controller
         // var_dump($data);
         // echo '</pre>';
         // die();
+    }
+
+
+    // Delete Experiece
+    public function deleteExperience() {
+        $data = [
+            'id_experience' => $_POST['id_experience'],
+            'id_user' => $_POST['id_user']
+        ];
+
+        $result = $this->userModel->deleteExperience($data);
+        if ($result) {
+            $experiences = $this->userModel->getExperiences($data);
+            $this->view('users/experiencesPage', $experiences);
+        }else {
+            echo "Experience cannot deleted";
+            $this->view('users/experiencesPage');
+        }
     }
 
 

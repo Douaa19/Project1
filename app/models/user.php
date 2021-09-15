@@ -210,13 +210,27 @@ class user
 
 
     // Get All Experiences For One Id_User
-    public function getExperiences($id_user) {
+    public function getExperiences($data) {
         $this->db->query("SELECT * FROM experiences WHERE id_user = :id_user");
-        $this->db->bind(':id_user', $id_user);
+        $this->db->bind(':id_user', $data['id_user']);
 
         $experiences = $this->db->resultSet();
         if ($experiences) {
             return $experiences;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Delete Experience With Id_User
+    public function deleteExperience($data) {
+
+        $this->db->query("DELETE FROM `experiences` WHERE id_experience = :id_experience");
+        $this->db->bind(':id_experience', $data['id_experience']);
+
+        if ($this->db->execute()) {
+            return true;
         }else {
             return false;
         }
