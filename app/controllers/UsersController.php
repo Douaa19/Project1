@@ -435,6 +435,42 @@ class UsersController extends Controller
             echo "Language cannot deleted";
             $this->view('users/languagesPage');
         }
+    }
+
+
+    // Navigate To Competences Page
+    public function competencesPage() {
+        $this->view('users/competencesPage');
+    }
+
+
+    // Add Competence
+    public function addCompetence() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'name_competence' => $_POST['name_competence'],
+            'error_name_competence' => ''
+        ];
+
+        if (empty($data['name_competence'])) {
+            $data['error_message'] = "Replire le champ s'il vous plaît";
+            $this->view('users/competencesPage', $data);
+        }
+
+        if (!empty($data['name_competence'])) {
+            $addCompetence = $this->userModel->addCompetence($data);
+            // if ($addcompetence) {
+            //     $competences = $this->userModel->getCompetences($data);
+            //     if ($competences) {
+            //         $data1 = ['data is here'];
+            //         $this->view('users/competencesPage', $competences, $data1);
+            //     }else{
+            //         $data1= [''];
+            //         $this->view('users/competencesPage', $data1);
+            //     }
+            // }
+        }
+
         // echo '<pre>';
         // var_dump($data);
         // echo '</pre>';
