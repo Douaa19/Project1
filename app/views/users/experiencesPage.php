@@ -81,7 +81,7 @@
                         </tbody>
                     </table>
                 </form>
-                
+                <?php if(!empty($data1)) : ?>
                 <div class="table mb-5 mt-3">
                     <table class="table">
                         <thead>
@@ -96,7 +96,6 @@
                         </thead>
                         <tbody>
                             <?php foreach($data as $experience) : ?>
-                                <?php if(!empty($experience->id_experience)) { ?>
                             <tr>
                                 <td><?php echo $experience->start_date; ?></td>
                                 <td><?php echo $experience->end_date; ?></td>
@@ -111,21 +110,12 @@
                                     </form>
                                 </td>
                             </tr>
-                            <?php }else { ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <?php } ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                     <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/languagesPage">Suivant</a></button>
                 </div>
+                <?php endif; ?>
         </div>
     </div>
 </main>

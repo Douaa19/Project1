@@ -235,4 +235,47 @@ class user
             return false;
         }
     }
+
+
+    // Add Language Into Database
+    public function addLanguage($data) {
+        $this->db->query("INSERT INTO `languages`(`name_language`, `level`, `id_user`) VALUES (:name_language, :level, :id_user)");
+        $this->db->bind(':name_language', $data['name_language']);
+        $this->db->bind(':level', $data['level']);
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $add = $this->db->execute();
+        if ($add) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Get All Languages From Table
+    public function getLanguages($data) {
+        $this->db->query("SELECT * FROM `languages` WHERE id_user = :id_user");
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $languages = $this->db->resultSet();
+        if($languages){
+            return $languages;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Delete Language With Id_language
+    public function deleteLanguage($data) {
+        $this->db->query("DELETE FROM `languages` WHERE id_language = :id_language");
+        $this->db->bind(':id_language', $data['id_language']);
+
+        if ($this->db->execute()) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
