@@ -1,10 +1,9 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
-<?php var_dump($data); ?>
+
 <main>
     <div class="container">
-    <h1 class="text-light p-2" style="background-color: #2273B9;">Experiences</h1>
+        <h1 class="text-light p-2" style="background-color: #2273B9;">Experiences</h1>
         <div class="container row">
-            <div class="experience">
                 <form action="<?php echo URLROOT; ?>/UserController/addExperience" method="post">
                     <table class="table table-striped">
                         <tbody>
@@ -82,6 +81,52 @@
                         </tbody>
                     </table>
                 </form>
+                
+                <div class="table mb-5 mt-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date début</th>
+                                <th>Date fin</th>
+                                <th>Société</th>
+                                <th>Contrat</th>
+                                <th>Fonction</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($data as $experience) : ?>
+                                <?php if(!empty($experience->id_experience)) { ?>
+                            <tr>
+                                <td><?php echo $experience->start_date; ?></td>
+                                <td><?php echo $experience->end_date; ?></td>
+                                <td><?php echo $experience->company; ?></td>
+                                <td><?php echo $experience->type_contract; ?></td>
+                                <td><?php echo $experience->function; ?></td>
+                                <td>
+                                    <form action="<?= URLROOT ?>/UsersController/deleteExperience" method="post">
+                                        <input type="hidden" name="id_user" value="<?php echo $experience->id_user; ?>">
+                                        <input type="hidden" name="id_experience" value="<?php echo $experience->id_experience; ?>">
+                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php }else { ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <?php } ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/languagesPage">Suivant</a></button>
+                </div>
+        </div>
     </div>
 </main>
 
