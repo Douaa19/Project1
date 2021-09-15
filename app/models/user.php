@@ -278,4 +278,23 @@ class user
             return false;
         }
     }
+
+
+    // Add Competence Into Database
+    public function addCompetence($data) {
+        $this->db->query("INSERT INTO `competences`(`name_competence`) VALUES (:name_competence)");
+        $this->db->bind(':name_competence', $data['name_competence']);
+
+        $add = $this->db->execute();
+        echo '<pre>';
+        var_dump($add);
+        echo '</pre>';
+        die();
+        if ($add) {
+            return true;
+        }else {
+            return false;
+        }
+        
+    }
 }
