@@ -185,4 +185,40 @@ class user
             return false;
         }
     }
+
+
+    // Add Experience Into Database
+    public function addExperience($data) {
+        $this->db->query("INSERT INTO `experiences`(`start_date`, `end_date`, `company`, `type_contract`, `function`, `area`, `details`, `id_user`) VALUES (:start_date,:end_date,:company,:type_contract,:function,:area,:details,:id_user)");
+        $this->db->bind(':start_date', $data['start_date']);
+        $this->db->bind(':end_date', $data['end_date']);
+        $this->db->bind(':company', $data['company']);
+        $this->db->bind(':type_contract', $data['type_contract']);
+        $this->db->bind(':function', $data['function']);
+        $this->db->bind(':area', $data['area']);
+        $this->db->bind(':details', $data['details']);
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $add = $this->db->execute();
+
+        if ($add) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Get All Experiences For One Id_User
+    public function getExperiences($id_user) {
+        $this->db->query("SELECT * FROM experiences WHERE id_user = :id_user");
+        $this->db->bind(':id_user', $id_user);
+
+        $experiences = $this->db->resultSet();
+        if ($experiences) {
+            return $experiences;
+        }else {
+            return false;
+        }
+    }
 }

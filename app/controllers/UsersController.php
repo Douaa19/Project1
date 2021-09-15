@@ -201,21 +201,22 @@ class UsersController extends Controller
         ];
 
         // Check The Inputs If Are Empty And Declare The Errors
-        if (!empty($data['error_name_diploma'])) {
+        if (empty($data['name_diploma'])) {
             $data['error_name_diploma'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_level'])) {
+        if (empty($data['level'])) {
             $data['error_level'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_date_diploma'])) {
+        if (empty($data['date_diploma'])) {
             $data['error_date_diploma'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_etablissement'])) {
+        if (empty($data['etablissement'])) {
             $data['error_etablissement'] = "Remplir le champ s'il vous plaît";
         }
-        if (!empty($data['error_subject'])) {
+        if (empty($data['subject'])) {
             $data['error_subject'] = "Remplir le champ s'il vous plaît";
         }
+
 
         // Check If The Errors Are Empty For Complate The Methode 
         if (!empty($data['name_diploma']) && !empty($data['level']) && !empty($data['date_diploma']) && !empty($data['etablissement']) && !empty($data['subject'])) {
@@ -228,12 +229,13 @@ class UsersController extends Controller
 
             }else {
                 $data['error_message'] = 'Diploma Cannot Insert';
-                $this->view('users/diplomas', $data);
+                $this->view('users/diplomas');
             }
 
             // header('Location:' . URLROOT . '/UsersController/diplomas');
 
         }else {
+            $data['error_message'] = "You must fill up all the informations";
             $this->view('users/diplomas', $data);
         }
     }
@@ -246,8 +248,6 @@ class UsersController extends Controller
             'id_diploma' => $_POST['id_diploma'],
             'id_user' => $_POST['id_user']
         ];
-        // var_dump($data);
-        // die();
 
         $result = $this->userModel->deleteDiploma($data);
         if ($result) {
@@ -260,6 +260,79 @@ class UsersController extends Controller
         
     }
 
+
+    // Navigate To Expériences Page
+    public function experiencesPage() {
+        $this->view('users/experiencesPage');
+    }
+
+    
+    // Add Experiences Method
+    public function addExperience() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'start_date' => $_POST['start_date'],
+            'end_date' => $_POST['end_date'],
+            'company' => $_POST['company'],
+            'type_contract' => $_POST['type_contract'],
+            'function' => $_POST['function'],
+            'area' => $_POST['area'],
+            'details' => $_POST['details'],
+            'error_start_date' => '',
+            'error_start_date' => '',
+            'error_company' => '',
+            'error_type_contract' => '',
+            'error_function' => '',
+            'error_area' => '',
+            'error_details' => ''
+        ];
+
+        if (empty($data['start_date'])) {
+            $data['error_start_date'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['end_date'])) {
+            $data['error_end_date'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['company'])) {
+            $data['error_company'] = "Remplir le champ s'il vous plaît";
+        }
+        if ($data['type_contract'] === 'null') {
+            $data['error_type_contract'] = "Sélectionez s'il vous plaît";
+        }
+        if (empty($data['function'])) {
+            $data['error_function'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['area'])) {
+            $data['error_area'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['details'])) {
+            $data['error_details'] = "Remplir le champ s'il vous plaît";
+        }
+
+        if (empty($data['start_date']) || empty($data['end_date']) || empty($data['company']) || $data['type_contract'] === 'null' || empty($data['function']) || empty($data['area']) || empty($data['details'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $this->view('users/experiencesPage', $data);
+        }
+
+        if (!empty($data['start_date']) && !empty($data['end_date']) && !empty($data['company']) && $data['type_contract'] !== 'null' && !empty($data['function']) && !empty($data['area']) && !empty($data['details'])) {
+            
+            $addExperience = $this->userModel->addExperience($data);
+
+            if ($addExperience) {
+                $experiences = $this->userModel->getExperiences($data['id_user']);
+                $this->view('users/experiencesPage', $experiences);
+            }else {
+                $data['error_message'] = "Experience Cannot Insert";
+                $this->view('users/experiencesPage', $data);
+            }
+        }
+        
+
+        // echo '<pre>';
+        // var_dump($data);
+        // echo '</pre>';
+        // die();
+    }
 
 
 
