@@ -435,10 +435,26 @@ class UsersController extends Controller
             echo "Language cannot deleted";
             $this->view('users/languagesPage');
         }
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
-        // die();
+    }
+
+
+    // Navigate To Competences Page
+    public function competencesPage() {
+        $this->view('users/competencesPage');
+    }
+
+
+    // Add Competence
+    public function addCompetence() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'name_competence' => $_POST['name_competence']
+        ];
+
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+        die();
     }
 
 
