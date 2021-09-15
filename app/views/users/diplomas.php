@@ -61,11 +61,8 @@
                         </tbody>
                     </table>
                 </form>
+                <?php if(!empty($data1)) : ?>
                 <div class="diplomas mb-5 mt-3">
-                    
-                        <?php if (empty($data['id_diploma'])) {
-                        ?>
-                    
                         <table class="table">
                             <thead>
                                 <tr>
@@ -95,8 +92,8 @@
                             </tbody>
                         </table>
                         <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/experiencesPage">Suivant</a></button>
-                    <?php } ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

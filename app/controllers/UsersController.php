@@ -224,9 +224,10 @@ class UsersController extends Controller
             if($this->userModel->addDiploma($data)) {
 
                 $diplomas = $this->userModel->getDiplomas($data);
-
-                $this->view('users/diplomas', $diplomas);
-
+                if ($diplomas) {
+                    $data1 = ['data is here'];
+                    $this->view('users/diplomas', $diplomas, $data1); 
+                }
             }else {
                 $data['error_message'] = 'Diploma Cannot Insert';
                 $this->view('users/diplomas');
@@ -252,7 +253,13 @@ class UsersController extends Controller
         $result = $this->userModel->deleteDiploma($data);
         if ($result) {
             $diplomas = $this->userModel->getDiplomas($data);
-            $this->view('users/diplomas', $diplomas);
+            if ($diplomas) {
+                $data1 = ['data is here'];
+                $this->view('users/diplomas', $diplomas, $data1); 
+            }else {
+                $data1 = [''];
+                $this->view('users/diplomas');
+            }
         }else {
             echo "Diploma cannot deleted";
             $this->view('users/diplomas');
@@ -320,18 +327,16 @@ class UsersController extends Controller
 
             if ($addExperience) {
                 $experiences = $this->userModel->getExperiences($data);
-                $this->view('users/experiencesPage', $experiences);
+                if ($experiences) {
+                    $data1 = ['data is here'];
+                    $this->view('users/experiencesPage', $experiences, $data1); 
+                }
+                
             }else {
                 $data['error_message'] = "Experience Cannot Insert";
                 $this->view('users/experiencesPage', $data);
             }
         }
-        
-
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
-        // die();
     }
 
 
@@ -345,11 +350,95 @@ class UsersController extends Controller
         $result = $this->userModel->deleteExperience($data);
         if ($result) {
             $experiences = $this->userModel->getExperiences($data);
-            $this->view('users/experiencesPage', $experiences);
+            if ($experiences) {
+                $data1 = ['data is here'];
+                $this->view('users/experiencesPage', $experiences, $data1); 
+            }else {
+                $data1 = [''];
+                $this->view('users/experiencesPage');
+            }
         }else {
             echo "Experience cannot deleted";
             $this->view('users/experiencesPage');
         }
+    }
+
+
+    // Navigate To Languages Page
+    public function languagesPage() {
+        $this->view('users/languagesPage');
+    }
+
+
+    // Add New Language For User
+    public function addLanguage() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'name_language' => $_POST['name_language'],
+            'level' => $_POST['level'],
+            'error_name_language' => '',
+            'error_level' => '',
+            'error_message' => ''
+        ];
+
+        if (empty($data['name_language'])) {
+            $data['error_name_language'] = "Remplir le champ s'il vous plaît";
+        }
+        if (empty($data['level'])) {
+            $data['error_level'] = "Remplir le champ s'il vous plaît";
+        }
+
+        if (empty($data['name_language']) || empty($data['level'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $this->view('users/languagesPage', $data);
+        }
+
+        if (!empty($data['name_language']) && !empty($data['level'])) {
+            $addLanguage = $this->userModel->addLanguage($data);
+            if ($addLanguage) {
+                $languages = $this->userModel->getLanguages($data);
+                if ($languages) {
+                    $data1 = ['data is here'];
+                    $this->view('users/LanguagesPage', $languages, $data1);
+                }else{
+                    $data1= [''];
+                    $this->view('users/languagesPage', $data1);
+                }
+            }
+        }
+
+        // echo '<pre>';
+        // var_dump($data);
+        // echo '</pre>';
+        // die();
+    }
+
+
+    // Delete Language With Id_language
+    public function deleteLanguage() {
+        $data = [
+            'id_language' => $_POST['id_language'],
+            'id_user' => $_POST['id_user']
+        ];
+
+        $result = $this->userModel->deleteLanguage($data);
+        if ($result) {
+            $languages = $this->userModel->getLanguages($data);
+            if ($languages) {
+                $data1 = ['data id here'];
+                $this->view('users/languagesPage', $languages, $data1);
+            }else {
+                $data1 = [''];
+                $this->view('users/languagesPage', $data1);
+            }
+        }else {
+            echo "Language cannot deleted";
+            $this->view('users/languagesPage');
+        }
+        // echo '<pre>';
+        // var_dump($data);
+        // echo '</pre>';
+        // die();
     }
 
 
