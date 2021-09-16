@@ -459,22 +459,52 @@ class UsersController extends Controller
 
         if (!empty($data['name_competence'])) {
             $addCompetence = $this->userModel->addCompetence($data);
-            // if ($addcompetence) {
-            //     $competences = $this->userModel->getCompetences($data);
-            //     if ($competences) {
-            //         $data1 = ['data is here'];
-            //         $this->view('users/competencesPage', $competences, $data1);
-            //     }else{
-            //         $data1= [''];
-            //         $this->view('users/competencesPage', $data1);
-            //     }
-            // }
+            if ($addCompetence) {
+                $competences = $this->userModel->getCompetences($data);
+                if ($competences) {
+                    $data1 = ['data is here'];
+                    $this->view('users/competencesPage', $competences, $data1);
+                }else{
+                    $data1= [''];
+                    $this->view('users/competencesPage', $data1);
+                }
+            }
         }
 
         // echo '<pre>';
         // var_dump($data);
         // echo '</pre>';
         // die();
+    }
+
+
+    // Delete Competence 
+    public function deleteCompetence() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'id_competence' => $_POST['id_competence']
+        ];
+
+        $result = $this->userModel->deleteCompetence($data);
+        if ($result) {
+            $competences = $this->userModel->getCompetences($data);
+            if ($competences) {
+                $data1 = ['data id here'];
+                $this->view('users/competencesPage', $competences, $data1);
+            }else {
+                $data1 = [''];
+                $this->view('users/competencesPage', $data1);
+            }
+        }else {
+            echo "Language cannot deleted";
+            $this->view('users/competencesPage');
+        }
+    }
+
+
+    // Navigate To Page Create Email & Password
+    public function infosLogin() {
+        $this->view('users/infosLogin');
     }
 
 

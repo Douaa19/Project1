@@ -282,19 +282,44 @@ class user
 
     // Add Competence Into Database
     public function addCompetence($data) {
-        $this->db->query("INSERT INTO `competences`(`name_competence`) VALUES (:name_competence)");
+        $this->db->query("INSERT INTO `competences`(`name_competence`, `id_user`) VALUES (:name_competence, :id_user)");
         $this->db->bind(':name_competence', $data['name_competence']);
+        $this->db->bind(':id_user', $data['id_user']);
 
         $add = $this->db->execute();
-        echo '<pre>';
-        var_dump($add);
-        echo '</pre>';
-        die();
         if ($add) {
             return true;
         }else {
             return false;
         }
         
+    }
+
+
+    // Get All Competences With Id_User
+    public function getCompetences($data) {
+        $this->db->query("SELECT * FROM `competences` WHERE id_user = :id_user");
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $competences =$this->db->resultSet();
+        if ($competences) {
+            return $competences;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Delete Competence With Id_Competence
+    public function deleteCompetence($data) {
+        $this->db->query("DELETE FROM `competences` WHERE id_competence = :id_competence");
+        $this->db->bind('id_competence', $data['id_competence']);
+
+        $result = $this->db->execute();
+        if ($result) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
