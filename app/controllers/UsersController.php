@@ -574,6 +574,36 @@ class UsersController extends Controller
     }
 
 
+    // Delete Competence 
+    public function deleteCompetence() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'id_competence' => $_POST['id_competence']
+        ];
+
+        $result = $this->userModel->deleteCompetence($data);
+        if ($result) {
+            $competences = $this->userModel->getCompetences($data);
+            if ($competences) {
+                $data1 = ['data id here'];
+                $this->view('users/competencesPage', $competences, $data1);
+            }else {
+                $data1 = [''];
+                $this->view('users/competencesPage', $data1);
+            }
+        }else {
+            echo "Language cannot deleted";
+            $this->view('users/competencesPage');
+        }
+    }
+
+
+    // Navigate To Page Create Email & Password
+    public function infosLogin() {
+        $this->view('users/infosLogin');
+    }
+
+
 
 
 

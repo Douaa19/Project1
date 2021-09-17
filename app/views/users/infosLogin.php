@@ -1,6 +1,6 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
 
-<?php  ?>
+
 <main>
     <div class="container">
         <div class="container row">
