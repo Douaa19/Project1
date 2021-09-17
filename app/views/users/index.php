@@ -5,17 +5,19 @@
         <div class="container">
             <form action="<?php echo URLROOT; ?>/UsersController/login" method="post">
             <h1 class="h3 mb-3 fw-normal">se connecter</h1>
-
-            <div class="form-floating">
-                <label for="floatingInput">Email address</label>
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <div class="email">
+                <label for="floatingInput" <?php if(!empty($data['error_email'])) { ?>" class="text-danger" <?php } ?> <?php if(!empty($data['existe_email'])) { ?> class="text-success" <?php } ?>>Email address</label>
+                <input type="email" name="email" class="form-control" id="floatingInput" value="<?php if(!empty($data['email'])) { echo $data['email']; } ?>" >
+                <?php if(!empty($data['error_email'])) { ?><h6 class ="text-danger">*<?php echo $data['error_email']; ?>*</h6><?php } ?>
+                <?php if(!empty($data['existe_email'])) { ?><h6 class ="text-success">*<?php echo $data['existe_email']; ?>*</h6><?php } ?>
             </div>
-            <div class="form-floating">
-                <label for="floatingPassword">Password</label>
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <div class="password">
+                <label for="floatingPassword" <?php if(!empty($data['error_password'])) { ?> class="text-danger" <?php } ?>>Password</label>
+                <input type="password" name="password" class="form-control" id="floatingPassword">
+                <?php if(!empty($data['error_password'])) { ?><h6 class ="text-danger">*<?php echo $data['error_password']; ?>*</h6><?php } ?>
             </div>
                 <div class="button">
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">envoyer</button>
+                    <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">envoyer</button>
                     <span class="mt-5 mb-3 text-muted text-uppercase">vous n'avez pas du compte <a href="<?php echo URLROOT; ?>/UsersController/signUp">inscivez-vous!</a></span>
                 </div>
             </form>

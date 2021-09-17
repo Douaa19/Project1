@@ -26,8 +26,47 @@ class UsersController extends Controller
     public function login() {
         $data = [
             'email' => $_POST['email'],
-            'password' => $_POST['password']
+            'password' => $_POST['password'],
+            'error_email' => '',
+            'error_password' => '',
+            'existe_email' => ''
         ];
+
+        if (empty($data['email'])) {
+            $data['error_email'] = "Ecrir votre adresse email s'il vous plaît";
+        }
+        if (empty($data['password'])) {
+            $data['error_password'] = "Ecrir votre mot de passe s'il vous plaît";
+        }
+
+        if (empty($data['password']) && !empty($data['email'])) {
+
+            $verify = $this->userModel->checkUserEmail($data);
+            if ($verify->email === $data['email']) {
+                $data['existe_email'] = "L'adresse email est enregisté";
+                $this->view('users/index', $data);
+            }else {
+
+                $data['error_email'] = "L'address email n'existe pas";
+                $this->view('users/index', $data);
+            }
+        }
+
+        if (!empty($data['email']) && !empty($data['password'])) {
+            $verifyEmail = $this->userModel->checkUserEmail($data);
+            if ($verifyEmail->email == $data['email']) {
+                $verifyPassword = $this->userModel->checkUserPassword($data);
+                $checkMatchPassword = password_verify($data['password'], $verifyPassword->password);
+                if ($checkMatchPassword == 1) {
+                    echo "passwords are matches";
+                }else {
+                    echo "passwords are not matches";
+                }
+            }else {
+                $data['error_email'] = "L'address email n'existe pas";
+                $this->view('users/index', $data);
+            }
+        }
     }
 
 
@@ -470,11 +509,6 @@ class UsersController extends Controller
                 }
             }
         }
-
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
-        // die();
     }
 
 
@@ -504,7 +538,72 @@ class UsersController extends Controller
 
     // Navigate To Page Create Email & Password
     public function infosLogin() {
-        $this->view('users/infosLogin');
+        $data = ['id_user' => $_POST['id_user']];
+        $email = $this->userModel->getEmail($data);
+        $this->view('users/infosLogin', $email);
+    }
+
+
+    // Create Password For User
+    public function completCreationUser() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'check' => $_POST['check_password'],
+            'error_password' => '',
+            'error_check' => '',
+            'error_match' => '',
+            'error_message' => ''
+        ];
+
+        if (empty($data['password'])) {
+            $data['error_password'] = "Vous dever creer un mot de passe";
+        }
+        if (empty($data['check'])) {
+            $data['error_check'] = "Vous dever creer un mot de passe";
+        } 
+        
+        if (empty($data['password']) || empty($data['check'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->checkUserEmail($data);
+            $this->view('users/infosLogin', $email, $data);
+        }
+
+        if (!empty($data['email']) && !empty($data['password']) && !empty($data['check'])) {
+            if ($data['password'] === $data['check']) {
+                $uppercase = preg_match('@[A-Z]@', $data['password']);
+                $lowercase = preg_match('@[a-z]@', $data['password']);
+                $number    = preg_match('@[0-9]@', $data['password']);
+                $specialChars = preg_match('@[^\w]@', $data['password']);
+
+                if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['password']) < 8) {
+                    $data['error_message'] = "Password should be at least 8 characters in length and should include at least one upper case letter, one number and one special character";
+                    $email = $this->userModel->checkUserEmail($data);
+                    $this->view('users/infosLogin', $email, $data);
+                }else {
+                    $data['safePassword'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    $stm = $this->userModel->insertPassword($data);
+                    if ($stm) {
+                        $this->session->unsetSession('id_user');
+                        $this->view('users/index');
+                    }else {
+                        $data['error_message'] = "Password cannot insert";
+                        $email = $this->userModel->checkUserEmail($data);
+                        $this->view('users/infosLogin', $data);
+                    }
+                }
+            }else {
+                $data['error_message'] = "The Password is not match";
+                $email = $this->userModel->getEmail($data);
+                $this->view('users/infosLogin', $data);
+            }
+        }else {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->checkUserEmail($data);
+            $this->view('users/infosLogin', $email, $data);
+        }
     }
 
 

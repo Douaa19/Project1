@@ -322,4 +322,57 @@ class user
             return false;
         }
     }
+
+
+    // Get User Email With Id_User
+    public function getEmail($data) {
+        $this->db->query("SELECT users.email FROM users WHERE id_user = :id_user");
+        $this->db->bind(':id_user',$data['id_user']);
+
+        $email = $this->db->single();
+        if ($email) {
+            return $email;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Add Password Of New User With Email & Id_User
+    public function insertPassword($data) {
+        $this->db->query("UPDATE `users` SET `password` = :safePassword WHERE id_user = :id_user");
+        $this->db->bind(':safePassword', $data['safePassword']);
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $result = $this->db->execute();
+        if ($result) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Check If The User Have Account Befor Or Not
+    public function checkUserEmail($data) {
+        $this->db->query("SELECT users.email FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $email = $this->db->single();
+        if ($email) {
+            return $email;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Check If The User Password Is In The database With Email
+    public function checkUserPassword($data) {
+        $this->db->query("SELECT users.password FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $password = $this->db->single();
+        return $password;
+    }
 }
