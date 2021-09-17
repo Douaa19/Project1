@@ -470,11 +470,107 @@ class UsersController extends Controller
                 }
             }
         }
+    }
 
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
-        // die();
+
+    // Delete Competence 
+    public function deleteCompetence() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'id_competence' => $_POST['id_competence']
+        ];
+
+        $result = $this->userModel->deleteCompetence($data);
+        if ($result) {
+            $competences = $this->userModel->getCompetences($data);
+            if ($competences) {
+                $data1 = ['data id here'];
+                $this->view('users/competencesPage', $competences, $data1);
+            }else {
+                $data1 = [''];
+                $this->view('users/competencesPage', $data1);
+            }
+        }else {
+            echo "Language cannot deleted";
+            $this->view('users/competencesPage');
+        }
+    }
+
+
+    // Navigate To Page Create Email & Password
+    public function infosLogin() {
+        $id_user = $_POST['id_user'];
+        $email = $this->userModel->getEmail($id_user);
+        $this->view('users/infosLogin', $email);
+    }
+
+
+    // Create Password For User
+    public function completCreationUser() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'check' => $_POST['check_password'],
+            'error_password' => '',
+            'error_check' => '',
+            'error_match' => '',
+            'error_message' => ''
+        ];
+
+        if (empty($data['password'])) {
+            $data['error_password'] = "Vous dever creer un mot de passe";
+        }
+        if (empty($data['check'])) {
+            $data['error_check'] = "Vous dever creer un mot de passe";
+        } 
+        
+        if (empty($data['password']) || empty($data['check'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->getEmail($data);
+            $this->view('users/infosLogin', $data);
+        }
+
+        if (!empty($data['email']) && !empty($data['password']) && !empty($data['check'])) {
+            if ($data['password'] === $data['check']) {
+                $uppercase = preg_match('@[A-Z]@', $data['password']);
+                $lowercase = preg_match('@[a-z]@', $data['password']);
+                $number    = preg_match('@[0-9]@', $data['password']);
+                $specialChars = preg_match('@[^\w]@', $data['password']);
+
+                if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['password']) < 8) {
+                    $data['error_message'] = "Password should be at least 8 characters in length and should include at least one upper case letter, one number and one special character";
+                    $email = $this->userModel->getEmail($data);
+                    $this->view('users/infosLogin', $data);
+                }else {
+                    $data['safePassword'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    $stm = $this->userModel->insertPassword($data);
+                    if ($stm) {
+                        $this->session->unsetSession('id_user');
+                        $this->view('users/index');
+                    }else {
+                        $data['error_message'] = "Password cannot insert";
+                        $email = $this->userModel->getEmail($data);
+                        $this->view('users/infosLogin', $data);
+                    }
+                }
+            }else {
+                $data['error_message'] = "The Password is not match";
+                $email = $this->userModel->getEmail($data);
+                $this->view('users/infosLogin', $data);
+            }
+        }else {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->getEmail($data);
+            $this->view('users/infosLogin', $data);
+        }
+
+
+// echo '<pre>';
+// var_dump($data);
+// echo '</pre>';
+// die();
     }
 
 
