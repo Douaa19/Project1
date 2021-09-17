@@ -505,6 +505,40 @@ class UsersController extends Controller
     }
 
 
+    // Create Password For User
+    public function completCreationUser() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'check' => $_POST['check_password'],
+            'error_password' => '',
+            'error_check' => '',
+            'error_match' => '',
+            'error_message' => ''
+        ];
+
+        if (empty($data['password'])) {
+            $data['error_password'] = "Vous dever creer un mot de passe";
+        }
+        if (empty($data['check'])) {
+            $data['error_check'] = "Vous dever creer un mot de passe";
+        } 
+        
+        if (empty($data['password']) || empty($data['check'])) {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->getEmail($data);
+            $this->view('users/infosLogin', $data);
+        }
+
+
+// echo '<pre>';
+// var_dump($data);
+// echo '</pre>';
+// die();
+    }
+
+
 // echo '<pre>';
 // var_dump($data);
 // echo '</pre>';

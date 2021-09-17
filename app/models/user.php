@@ -325,9 +325,9 @@ class user
 
 
     // Get User Email With Id_User
-    public function getEmail($id_user) {
+    public function getEmail($data) {
         $this->db->query("SELECT users.email FROM users WHERE id_user = :id_user");
-        $this->db->bind(':id_user',$id_user);
+        $this->db->bind(':id_user',$data['id_user']);
 
         $email = $this->db->single();
         if ($email) {
