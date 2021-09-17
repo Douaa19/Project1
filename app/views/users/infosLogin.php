@@ -9,7 +9,6 @@
                     <tbody>
                         <div class="errors">
                             <?php if(empty($data->error_message)){ ?><h6 class="text-danger"><?php echo '*' . $data['error_message'] . '*'; ?></h6><?php } ?>
-                            <?php if(empty($data->error_match)){ ?><h6 class="text-danger"><?php echo '*' . $data->error_match . '*'; ?></h6><?php } ?>
                         </div>
                         <tr>
                             <td>

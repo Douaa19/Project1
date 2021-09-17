@@ -531,18 +531,47 @@ class UsersController extends Controller
             $this->view('users/infosLogin', $data);
         }
 
+        if (!empty($data['email']) && !empty($data['password']) && !empty($data['check'])) {
+            if ($data['password'] === $data['check']) {
+                $uppercase = preg_match('@[A-Z]@', $data['password']);
+                $lowercase = preg_match('@[a-z]@', $data['password']);
+                $number    = preg_match('@[0-9]@', $data['password']);
+                $specialChars = preg_match('@[^\w]@', $data['password']);
+
+                if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['password']) < 8) {
+                    $data['error_message'] = "Password should be at least 8 characters in length and should include at least one upper case letter, one number and one special character";
+                    $email = $this->userModel->getEmail($data);
+                    $this->view('users/infosLogin', $data);
+                }else {
+                    $data['safePassword'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    $stm = $this->userModel->insertPassword($data);
+                    if ($stm) {
+                        $this->session->unsetSession('id_user');
+                        $this->view('users/index');
+                    }else {
+                        $data['error_message'] = "Password cannot insert";
+                        $email = $this->userModel->getEmail($data);
+                        $this->view('users/infosLogin', $data);
+                    }
+                }
+            }else {
+                $data['error_message'] = "The Password is not match";
+                $email = $this->userModel->getEmail($data);
+                $this->view('users/infosLogin', $data);
+            }
+        }else {
+            $data['error_message'] = "You must fill up all the informations";
+            $email = $this->userModel->getEmail($data);
+            $this->view('users/infosLogin', $data);
+        }
+
 
 // echo '<pre>';
 // var_dump($data);
 // echo '</pre>';
 // die();
     }
-
-
-// echo '<pre>';
-// var_dump($data);
-// echo '</pre>';
-// die();
 
 
 
