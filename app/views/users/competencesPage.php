@@ -56,7 +56,6 @@
                     <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                     <button type="submit" class="btn btn-primary">Suivant</button>
                 </form>
-                <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/infosLogin">Suivant</a></button>
             </div>
             <?php endif; ?>
         </div>

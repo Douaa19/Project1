@@ -26,8 +26,47 @@ class UsersController extends Controller
     public function login() {
         $data = [
             'email' => $_POST['email'],
-            'password' => $_POST['password']
+            'password' => $_POST['password'],
+            'error_email' => '',
+            'error_password' => '',
+            'existe_email' => ''
         ];
+
+        if (empty($data['email'])) {
+            $data['error_email'] = "Ecrir votre adresse email s'il vous plaît";
+        }
+        if (empty($data['password'])) {
+            $data['error_password'] = "Ecrir votre mot de passe s'il vous plaît";
+        }
+
+        if (empty($data['password']) && !empty($data['email'])) {
+
+            $verify = $this->userModel->checkUserEmail($data);
+            if ($verify->email === $data['email']) {
+                $data['existe_email'] = "L'adresse email est enregisté";
+                $this->view('users/index', $data);
+            }else {
+
+                $data['error_email'] = "L'address email n'existe pas";
+                $this->view('users/index', $data);
+            }
+        }
+
+        if (!empty($data['email']) && !empty($data['password'])) {
+            $verifyEmail = $this->userModel->checkUserEmail($data);
+            if ($verifyEmail->email == $data['email']) {
+                $verifyPassword = $this->userModel->checkUserPassword($data);
+                $checkMatchPassword = password_verify($data['password'], $verifyPassword->password);
+                if ($checkMatchPassword == 1) {
+                    echo "passwords are matches";
+                }else {
+                    echo "passwords are not matches";
+                }
+            }else {
+                $data['error_email'] = "L'address email n'existe pas";
+                $this->view('users/index', $data);
+            }
+        }
     }
 
 
@@ -573,188 +612,6 @@ class UsersController extends Controller
 // die();
     }
 
-
-    // Delete Competence 
-    public function deleteCompetence() {
-        $data = [
-            'id_user' => $_POST['id_user'],
-            'id_competence' => $_POST['id_competence']
-        ];
-
-        $result = $this->userModel->deleteCompetence($data);
-        if ($result) {
-            $competences = $this->userModel->getCompetences($data);
-            if ($competences) {
-                $data1 = ['data id here'];
-                $this->view('users/competencesPage', $competences, $data1);
-            }else {
-                $data1 = [''];
-                $this->view('users/competencesPage', $data1);
-            }
-        }else {
-            echo "Language cannot deleted";
-            $this->view('users/competencesPage');
-        }
-    }
-
-
-    // Navigate To Page Create Email & Password
-    public function infosLogin() {
-        $this->view('users/infosLogin');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Login method
-    // public function login() {
-
-    //     if(isset($_POST['submit_login'])) {
-
-    //         $data = [
-    //             'email' => $_POST['email'],
-    //             'password' => $_POST['password'],
-    //             'email_error' => '',
-    //             'password_error' => ''
-    //         ];
-
-    //         if (empty($data['email'])) {
-    //             $data['email_error'] = '*Saisir votre email*';
-    //         }
-
-    //         if (empty($data['password'])) {
-    //             $data['password_error'] = '*Saisir votre password*';
-    //         }
-
-    //         if(!empty($data['email']) && !empty($data['password'])) {
-
-    //             $result = $this->adminModel->getAdmin($data);
-
-    //             if ($result === false) {
-    //                 $this->view('admin/index');
-    //             }else {
-    //                 $email = $data['email'];
-    //                 $password = $data['password'];
-    //                 $dbEmail = $result->email;
-    //                 $dbPassword = $result->password;
-    //                 if ($email === $dbEmail && $password === $dbPassword) {
-    //                     $this->createSession($result);
-    //                 }
-    //             }
-
-                
-    //         }
-
-    //         $this->view('admin/index', $data);
-
-    //     }else {
-    //         $this->view('admin/index');
-    //     }
-
-    // }
-
-    // // Create session for login
-    // public function createSession($admin) {
-    //     // session_start();
-    //     $_SESSION['id'] = $admin->id;
-    //     $_SESSION['name'] = $admin->name;
-    //     $_SESSION['email'] = $admin->email;
-    //     $_SESSION['password'] = $admin->password;
-
-    //     header('Location: ' . URLROOT . '/PostController/index');
-
-    // }
-
-    // // Kill session for logout
-    // public function killSession() {
-
-    //     unset($_SESSION['id']);
-    //     unset($_SESSION['name']);
-    //     unset($_SESSION['email']);
-    //     unset($_SESSION['password']);
-    //     session_destroy();
-
-    //     header('Location: ' . URLROOT . '/AdminController/index');
-    // }
-
-    // // Serch method
-    // public function search() {
-    //     if (isset($_POST['submit_search'])) {
-    //         if (!empty($_POST['name'])) {
-                
-    //             $data = [
-    //                 'name' => $_POST['name'],
-    //                 'error_search' => ''
-    //             ];
-
-    //             $result = $this->adminModel->search($data);
-
-    //             if ($result) {
-    //                 $this->view('admin/result', $result);
-    //             }else {
-    //                 $data = [
-    //                     'search' => '',
-    //                     'error_search' => "Le resultat ne trouve pas"
-    //                 ];
-    //                 $this->view('admin/result', [], $data);
-    //             }
-
-    //         } else {
-    //             header('Location: ' . URLROOT . '/PostController/index');
-    //         }
-    //     }
-    // }
-
-    
-
-    // // GET CLIENTS 
-    // public function dashClient() {
-    //     $result = $this->adminModel->getClients();
-
-    //     for ($i=0; $i > 0 ; $i++) { 
-    //         $result[$i]->gender = explode(',', $result[$i]->gender);
-    //         $result[$i]->occasion = explode(',', $result[$i]->occasion);
-    //     }
-
-    //     if ($result) {
-    //         $this->view('admin/dash-client', $result);
-    //     }else {
-    //         return false;
-    //     }
-    // }
 
     
 }

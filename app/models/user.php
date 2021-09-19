@@ -352,4 +352,30 @@ class user
             return false;
         }
     }
+
+
+
+    // Check If The User Have Account Befor Or Not
+    public function checkUserEmail($data) {
+        $this->db->query("SELECT users.email FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $email = $this->db->single();
+        if ($email) {
+            return $email;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Check If The User Password Is In The database With Email
+    public function checkUserPassword($data) {
+        $this->db->query("SELECT users.password FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $password = $this->db->single();
+        return $password;
+    }
+    
 }
