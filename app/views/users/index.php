@@ -1,5 +1,5 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
-
+<?php var_dump($_SESSION); ?>
 
     <main class="">
         <div class="container">

@@ -324,6 +324,7 @@ class user
     }
 
 
+
     // Get User Email With Id_User
     public function getEmail($data) {
         $this->db->query("SELECT users.email FROM users WHERE id_user = :id_user");
@@ -353,6 +354,7 @@ class user
     }
 
 
+
     // Check If The User Have Account Befor Or Not
     public function checkUserEmail($data) {
         $this->db->query("SELECT users.email FROM users WHERE email = :email");
@@ -375,4 +377,5 @@ class user
         $password = $this->db->single();
         return $password;
     }
+    
 }
