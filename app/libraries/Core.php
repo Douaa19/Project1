@@ -8,7 +8,7 @@
 
 class Core
 {
-  protected $currentController = 'UsersController';
+  protected $currentController = 'AdminsController';
   protected $currentMethod = 'index';
   protected $params = [];
 
