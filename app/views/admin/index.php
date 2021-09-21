@@ -1,34 +1,29 @@
-<?php include_once APPROOT . '../views/inc/header.php'; ?>
+<?php include_once APPROOT . '../views/inc/header-index.php'; ?>
 
-    <main>
-        <div class="container">
-            <form action="<?php echo URLROOT; ?>/AdminsController/loginSuperAdmin" method="post">
-                <h1 class="h3 mb-3 fw-normal">se connecter</h1>
-                <div class="email">
-                    <label for="floatingInput">Email address</label>
-                    <input type="email" name="email" class="form-control" id="floatingInput"">
-                </div>
-                <div class="password">
-                    <label for="floatingPassword">Password</label>
-                    <input type="password" name="password" class="form-control" id="floatingPassword">
-                </div>
-                    <div class="button">
-                    <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">se connecter</button>
-                </div>
-            </form>
+
+<!-- MAIN -->
+<main>
+<!-- FORM LOGIN -->
+    <div class="login">
+    <form action="<?php echo URLROOT ?>/AdminController/login" method="post">
+        <h1 class="text-uppercase pt-1">login</h1>
+        <div class="email">
+            <label for="email">Adresse email</label>
+            <input type="text" name="email" id="email" value="<?php if(isset($data['email'])) { echo $data['email']; }?>">
+            <span class="text-danger"><?php if(isset($data['email_error'])) { echo $data['email_error']; } ?></span>
         </div>
-    </main>
-
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <span class="text-muted">
-                
-            </span>
+        <div class="password">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password">
+            <span class="text-danger"><?php if(isset($data['password_error'])) { echo $data['password_error']; } ?></span>
         </div>
-    </footer>
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js">
-    </script>
-
+        <div class="button">
+            <input type="submit" name="submit_login" value="Entrer" class="custom-btn btn-3">
+        </div>
+    </form>
+    </div>
+<!-- FORM LOGIN -->
+</main>
+<!-- MAIN -->
 </body>
 </html>

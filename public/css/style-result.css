@@ -1,0 +1,87 @@
+main .folders .result {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+main .folders .result .card form button {
+    background: none;
+    border: none;
+}
+
+main .folders .result .card img {
+    width: 100%;
+    height: 100%;
+}
+
+main .folders .result .card .route {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .folders .result .card .route h3 {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+main .folders .result .card .route h3,
+main .folders .result .card .route h3::after,
+main .folders .result .card .route h3::before {
+    transition: all .2s;
+}
+
+main .folders .result .card .route h3:hover {
+    filter: drop-shadow(0 6mm 4mm rgb(47, 44, 48));
+}
+
+main .folders .result .card .route.strok h3,
+main .folders .result .route.fill h3 {
+    position: relative;
+}
+
+main .folders .result .card .route.strok h3:after,
+main .folders .result .card .route.fill h3:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #F3ECEC;
+    height: 1px;
+}
+
+main .folders .result .card .route.strok h3:hover:after {
+    width: 100%;
+}
+
+main .folders .result .card .route.fill h3:after {
+    text-align: left;
+    content: '.';
+    margin: 0;
+    opacity: 0;
+}
+
+main .folders .result .card .route.fill h3:hover {
+    filter: blur(3px);
+    color: #fff;
+    z-index: 1;
+}
+
+main .folders .result .card .route.fill h3:hover:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation:fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+}
+
+main .folders .result .card img:hover {
+    filter: blur(3px);
+}
