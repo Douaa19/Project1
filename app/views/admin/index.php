@@ -1,29 +1,37 @@
-<?php include_once APPROOT . '../views/inc/header-index.php'; ?>
+<?php include_once APPROOT . '../views/inc/header.php'; ?>
 
+    <main>
+        <div class="container">
+            <form action="<?php echo URLROOT; ?>/AdminsController/loginSuperAdmin" method="post">
+                <h1 class="h3 mb-3 fw-normal">se connecter Admin</h1>
+                <?php if(!empty($data['error_message'])) ?><h6 class="text-danger"><?php echo $data['error_message']; ?></h6>
+                <div class="email">
+                    <label for="floatingInput">Email address</label>
+                    <input type="email" name="email" class="form-control" id="floatingInput" value="<?php if(empty($data['error_email'])) { echo $data['email']; }?>">
+                    <?php if(!empty($data['error_email'])) {?><h6 class="text-danger"><?php echo $data['error_email']; ?></h6><?php }?>
+                </div>
+                <div class="password">
+                    <label for="floatingPassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="floatingPassword">
+                    <?php if(!empty($data['error_password'])) {?><h6 class="text-danger"><?php echo $data['error_password']; ?></h6><?php }?>
+                </div>
+                    <div class="button">
+                    <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">se connecter</button>
+                </div>
+            </form>
+        </div>
+    </main>
 
-<!-- MAIN -->
-<main>
-<!-- FORM LOGIN -->
-    <div class="login">
-    <form action="<?php echo URLROOT ?>/AdminController/login" method="post">
-        <h1 class="text-uppercase pt-1">login</h1>
-        <div class="email">
-            <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email" value="<?php if(isset($data['email'])) { echo $data['email']; }?>">
-            <span class="text-danger"><?php if(isset($data['email_error'])) { echo $data['email_error']; } ?></span>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">
+                
+            </span>
         </div>
-        <div class="password">
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
-            <span class="text-danger"><?php if(isset($data['password_error'])) { echo $data['password_error']; } ?></span>
-        </div>
-        <div class="button">
-            <input type="submit" name="submit_login" value="Entrer" class="custom-btn btn-3">
-        </div>
-    </form>
-    </div>
-<!-- FORM LOGIN -->
-</main>
-<!-- MAIN -->
+    </footer>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js">
+    </script>
+
 </body>
 </html>

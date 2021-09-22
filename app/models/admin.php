@@ -1,5 +1,6 @@
 <?php
 
+
 class admin
 
 {
@@ -43,6 +44,7 @@ class admin
         }
     }
 
+    
     // GET RESULT FROM DATABASE
     public function search($data) {
         $this->db->query("SELECT * FROM folders WHERE name = :name");
