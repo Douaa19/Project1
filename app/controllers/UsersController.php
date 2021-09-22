@@ -70,6 +70,12 @@ class UsersController extends Controller
     }
 
 
+    // Login User After The Sing-up
+    public function loginUser() {
+        
+    }
+
+
     // Method for navigate To SignUp page And Take Too Getters Method One For Areas And The Seconde For Cities
     public function signUp() {
         $areas = $this->userModel->getArea();
@@ -538,7 +544,7 @@ class UsersController extends Controller
 
     // Navigate To Page Create Email & Password
     public function infosLogin() {
-        $id_user = $_POST['id_user'];
+        $id_user = ['id_user' => $_POST['id_user']];
         $email = $this->userModel->getEmail($id_user);
         $this->view('users/infosLogin', $email);
     }
@@ -566,7 +572,7 @@ class UsersController extends Controller
         
         if (empty($data['password']) || empty($data['check'])) {
             $data['error_message'] = "You must fill up all the informations";
-            $email = $this->userModel->getEmail($data);
+            $data['email'] = $this->userModel->getEmail($data);
             $this->view('users/infosLogin', $data);
         }
 
@@ -579,7 +585,7 @@ class UsersController extends Controller
 
                 if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['password']) < 8) {
                     $data['error_message'] = "Password should be at least 8 characters in length and should include at least one upper case letter, one number and one special character";
-                    $email = $this->userModel->getEmail($data);
+                    $data['email'] = $this->userModel->getEmail($data);
                     $this->view('users/infosLogin', $data);
                 }else {
                     $data['safePassword'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -590,18 +596,18 @@ class UsersController extends Controller
                         $this->view('users/index');
                     }else {
                         $data['error_message'] = "Password cannot insert";
-                        $email = $this->userModel->getEmail($data);
+                        $data['email'] = $this->userModel->getEmail($data);
                         $this->view('users/infosLogin', $data);
                     }
                 }
             }else {
                 $data['error_message'] = "The Password is not match";
-                $email = $this->userModel->getEmail($data);
+                $data['email'] = $this->userModel->getEmail($data);
                 $this->view('users/infosLogin', $data);
             }
         }else {
             $data['error_message'] = "You must fill up all the informations";
-            $email = $this->userModel->getEmail($data);
+            $data['email'] = $this->userModel->getEmail($data);
             $this->view('users/infosLogin', $data);
         }
 

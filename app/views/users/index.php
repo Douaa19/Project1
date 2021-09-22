@@ -1,9 +1,9 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
-<?php var_dump($_SESSION); ?>
+
 
     <main class="">
         <div class="container">
-            <form action="<?php echo URLROOT; ?>/UsersController/login" method="post">
+            <form action="<?php echo URLROOT; ?>/UsersController/loginUser" method="post">
             <h1 class="h3 mb-3 fw-normal">se connecter</h1>
             <div class="email">
                 <label for="floatingInput" <?php if(!empty($data['error_email'])) { ?>" class="text-danger" <?php } ?> <?php if(!empty($data['existe_email'])) { ?> class="text-success" <?php } ?>>Email address</label>

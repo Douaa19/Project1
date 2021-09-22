@@ -3,13 +3,13 @@
   define('DB_HOST', 'localhost');
   define('DB_USER', 'root');
   define('DB_PASS', '');
-  define('DB_NAME', 'larmop1');
+  define('DB_NAME', 'studyou');
 
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'http://localhost/larmoProject1');
+  define('URLROOT', 'http://localhost/PFR');
   // Site Name
-  define('SITENAME', 'Larmo');
+  define('SITENAME', 'STUDYOU');
   // App Version
   define('APPVERSION', '1.0.0');
