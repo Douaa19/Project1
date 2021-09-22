@@ -15,10 +15,35 @@
     <link href="signin.css" rel="stylesheet">
 </head>
 <body>
-    <header class="flex-shrink-0 bg-light">
-        <div class="container">
-            <h1 class="text-uppercase">header</h1>
-        </div>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <div class="logo">
+                    <a href="#">
+                        <img src="<?= URLROOT ?>/img/glen-carrie-_oNISBwMTwo-unsplash.jpg" alt="" width="120" height="100">
+                    </a>
+                </div>
+                <div class="pages">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">condidat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">entreprise</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">tout sur tectra</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">nos ageces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">actualités</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     
