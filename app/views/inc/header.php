@@ -11,39 +11,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="<?php echo URLROOT ?>/js/navbar.js"></script>
     <title>Login Page</title>
-    <link href="signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= URLROOT?>/css/header.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container">
-                <div class="logo">
-                    <a href="#">
-                        <img src="<?= URLROOT ?>/img/glen-carrie-_oNISBwMTwo-unsplash.jpg" alt="" width="120" height="100">
-                    </a>
-                </div>
-                <div class="pages">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">condidat</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">entreprise</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">tout sur tectra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">nos ageces</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="<?= URLROOT ?>/UsersController/">actualités</a>
-                        </li>
-                    </ul>
+    <header class="">
+        <div class="container row m-0">
+            <div class="vid col-2"></div>
+            <div class="nav-logo col-2">
+                <div class="logo text-center">
+                    <span class="">logo</span>
                 </div>
             </div>
-        </nav>
+            <div class="items col-8">
+                <ul>
+                    <li>
+                        <a href="">condidat</a>
+                    </li>
+                    <li>
+                        <a href="">entreprise</a>
+                    </li>
+                    <li>
+                        <a href="">tout sur tectra</a>
+                    </li>
+                    <li>
+                        <a href="">nos agences</a>
+                    </li>
+                    <li>
+                        <a href="">actualités</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
 
-    
