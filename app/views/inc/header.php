@@ -17,33 +17,31 @@
     <link rel="stylesheet" href="<?= URLROOT?>/css/header.css">
 </head>
 <body>
-    <header class="">
+    <header class="header">
         <div class="container row m-0">
             <div class="vid col-2"></div>
-            <div class="nav-logo col-2">
+            <div class="nav-logo col-2 p-0">
                 <div class="logo text-center">
                     <span class="">logo</span>
                 </div>
             </div>
-            <div class="items col-8">
-                <ul>
-                    <li>
-                        <a href="">condidat</a>
-                    </li>
-                    <li>
-                        <a href="">entreprise</a>
-                    </li>
-                    <li>
-                        <a href="">tout sur tectra</a>
-                    </li>
-                    <li>
-                        <a href="">nos agences</a>
-                    </li>
-                    <li>
-                        <a href="">actualités</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav justify-content-end col-8">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">condida</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">entreprise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">tout sur tectra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">nos agences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">actualités</a>
+                </li>
+            </ul>
         </div>
     </header>
 
