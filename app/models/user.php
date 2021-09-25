@@ -118,6 +118,21 @@ class user
     }
 
 
+    // Get Some Infos For Check If The User Is Allredy Exists
+    public function getUserByEmail($data) {
+        $this->db->query("SELECT * FROM users WHERE email = :email");
+
+        $this->db->bind(':email', $data['email']);
+
+        $data = $this->db->single();
+        if ($data) {
+            return $data;
+        }else {
+            return false;
+        }
+    }
+
+
     // Get One Id User
     public function getIdUser($data) {
         $this->db->query("SELECT users.id_user FROM users WHERE email = :email AND fName = :fName AND lName = :lName");
@@ -375,7 +390,13 @@ class user
         $this->db->bind(':email', $data['email']);
 
         $password = $this->db->single();
-        return $password;
+        $hashed_password = $password->password;
+        
+        if (password_verify($data['password'], $hashed_password)) {
+            return true;
+        }else {
+            return false;
+        }
     }
     
 }

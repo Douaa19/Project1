@@ -56,11 +56,15 @@ class UsersController extends Controller
             $verifyEmail = $this->userModel->checkUserEmail($data);
             if ($verifyEmail->email == $data['email']) {
                 $verifyPassword = $this->userModel->checkUserPassword($data);
-                $checkMatchPassword = password_verify($data['password'], $verifyPassword->password);
-                if ($checkMatchPassword == 1) {
-                    echo "passwords are matches";
+                $user = $this->userModel->getUserByEmail($data);
+                
+                if ($verifyPassword == 1) {
+                    $this->session->setSession('fName',$user->fName);
+                    $this->view('users/homePage');
                 }else {
-                    echo "passwords are not matches";
+                    $data['error_password'] = "Le mot de passe est incorrect";
+                    $data['email'] = $verifyEmail;
+                    $this->view('users/index', $data);
                 }
             }else {
                 $data['error_email'] = "L'address email n'existe pas";
@@ -71,9 +75,9 @@ class UsersController extends Controller
 
 
     // Login User After The Sing-up
-    public function loginUser() {
+    // public function loginUser() {
         
-    }
+    // }
 
 
     // Method for navigate To SignUp page And Take Too Getters Method One For Areas And The Seconde For Cities

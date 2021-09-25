@@ -13,6 +13,11 @@
                         <th scope="col-3">prénom</th>
                         <th scope="col-3">email</th>
                         <th scope="col-3">cv</th>
+                        <th scope="col-3">Offres d'emploi</th>
+                        <th scope="col-3">CNSS</th>
+                        <th scope="col-3">Fiches de paie</th>
+                        <th scope="col-3">Attestations</th>
+                        <th scope="col-3">Dossiers de maladie</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +27,11 @@
                         <td><?= $user->fName; ?></td>
                         <td><?= $user->email; ?></td>
                         <td><a href="<?= URLROOT?>/uploads/<?= $user->name_file; ?>"><?= $user->name_file; ?></a></td>
+                        <td><?= "offres_d'emploi"; ?></td>
+                        <td><?= "cnss"; ?></td>
+                        <td><?= "fiches_de_paie"; ?></td>
+                        <td><?= "attestations"; ?></td>
+                        <td><?= "dossiers_de_maladie"; ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -29,3 +39,7 @@
         </div>
     </div>
 </main>
+
+<?php include_once APPROOT . '../views/inc/footer.php'; ?>
+</body>
+</html>
