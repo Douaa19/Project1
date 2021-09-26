@@ -57,9 +57,11 @@ class UsersController extends Controller
             if ($verifyEmail->email == $data['email']) {
                 $verifyPassword = $this->userModel->checkUserPassword($data);
                 $user = $this->userModel->getUserByEmail($data);
-                
+
                 if ($verifyPassword == 1) {
+                    $this->session->setSession('id_user',$user->id_user);
                     $this->session->setSession('fName',$user->fName);
+                    $this->session->setSession('lName',$user->lName);
                     $this->view('users/homePage');
                 }else {
                     $data['error_password'] = "Le mot de passe est incorrect";
@@ -74,10 +76,24 @@ class UsersController extends Controller
     }
 
 
-    // Login User After The Sing-up
-    // public function loginUser() {
-        
-    // }
+    // Logout User
+    public function logoutUser() {
+        $data = [
+            'id_user' => $_POST['id_user']
+        ];
+
+        $data = [
+            'email' => '',
+            'password' => '',
+            'error_email' => '',
+            'error_password' => '',
+            'existe_email' => ''
+        ];
+        $this->session->unsetSession('id_user');
+        $this->session->unsetSession('fName');
+        $this->session->unsetSession('lName');
+        $this->view('users/index', $data);
+    }
 
 
     // Method for navigate To SignUp page And Take Too Getters Method One For Areas And The Seconde For Cities
