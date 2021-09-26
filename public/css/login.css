@@ -1,0 +1,59 @@
+main .container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 25%;
+}
+
+main .container .contents {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    padding: 2rem;
+}
+
+main .container .contents .h1 {
+    font-size: 25px;
+    padding: 2rem;
+}
+
+main .container .contents form {
+    max-width: 66%;
+}
+
+main .container .contents form .email.password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .container .contents form .email.password label {
+    font-size: 15px;
+    font-weight: 500;
+    width: 50%;
+}
+
+main .container .contents form input {
+    width: 70%;
+    border: #2273B9 1px solid;
+}
+
+main .container .contents form .button {
+    display: flex;
+    align-items: center;
+}
+
+main .container .contents form .button .right {
+    font-size: 12px;
+}
+
+main .container .contents form .button .btn {
+    padding: 0.5rem 1.2rem;
+    height: min-content;
+    background-color: #2273B9;
+    border: none;
+    text-transform: capitalize;
+}

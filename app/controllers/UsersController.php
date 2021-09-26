@@ -56,16 +56,16 @@ class UsersController extends Controller
             $verifyEmail = $this->userModel->checkUserEmail($data);
             if ($verifyEmail->email == $data['email']) {
                 $verifyPassword = $this->userModel->checkUserPassword($data);
-                $user = $this->userModel->getUserByEmail($data);
 
                 if ($verifyPassword == 1) {
+                    $user = $this->userModel->getUserByEmail($data);
                     $this->session->setSession('id_user',$user->id_user);
                     $this->session->setSession('fName',$user->fName);
                     $this->session->setSession('lName',$user->lName);
                     $this->view('users/homePage');
                 }else {
                     $data['error_password'] = "Le mot de passe est incorrect";
-                    $data['email'] = $verifyEmail;
+                    $data['email'] = $this->userModel->checkUserEmail($data);
                     $this->view('users/index', $data);
                 }
             }else {
@@ -78,9 +78,6 @@ class UsersController extends Controller
 
     // Logout User
     public function logoutUser() {
-        $data = [
-            'id_user' => $_POST['id_user']
-        ];
 
         $data = [
             'email' => '',
