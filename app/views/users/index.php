@@ -5,7 +5,7 @@
         <div class="container row p-0">
             <div class="vid col-2 p-0"></div>
             <div class="contents col-10">
-                <h1 class="h1 fw-normal">Se connecter</h1>
+                <h1 class="h1">Se connecter</h1>
                 <form action="<?php echo URLROOT; ?>/UsersController/login" method="post">
                     <div class="email" id="infos">
                         <label for="floatingInput" <?php if(!empty($data['error_email'])) { ?>" class="text-danger" <?php } ?> <?php if(!empty($data['existe_email'])) { ?> class="text-success" <?php } ?>>Email address:</label>

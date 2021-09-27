@@ -1,0 +1,58 @@
+main .container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+main .container .content .h2 {
+    color: #2273B9;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    font-weight: 100;
+}
+
+main .container .content form .table .light {
+    background-color: #FAF9F9;
+}
+
+main .container .content form .table .dark {
+    background-color: #E5E5E5;
+}
+
+main .container .content form .table tbody tr .row {
+    border: none;
+    margin: 0;
+}
+
+main .container .content form .table tbody tr {
+    height: 6vh;
+}
+
+main .container .content form .table tbody tr td {
+    border: none;
+    padding: 0.5rem;
+}
+
+main .container .content form .table tbody tr .row label {
+    text-transform: capitalize;
+}
+
+#error {
+    height: 2vh;
+}
+
+main .container .content form .table tbody tr .input input,select,textarea{
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    outline: #2273B9;
+    padding: 0.5rem;
+}
+
+main .container .content form .table tbody tr .button .submit button{
+    padding: 0.5rem 1.2rem;
+    height: min-content;
+    background-color: #2273B9;
+    border: none;
+    text-transform: capitalize;
+}
+
