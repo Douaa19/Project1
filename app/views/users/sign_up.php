@@ -147,7 +147,7 @@
                     <td></td>
                     <td class="button">
                         <div class="submit">
-                            <button type="submit" name="submit" class="btn btn-primary">envoyer</button>
+                            <button type="submit" name="submit" class="btn">envoyer</button>
                             <span>Vous avez un compte <a href="<?php echo URLROOT; ?>/UsersController/index">Connecter vous!</a></span>
                         </div>
                     </td>

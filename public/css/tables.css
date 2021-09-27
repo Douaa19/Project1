@@ -48,11 +48,54 @@ main .container .content form .table tbody tr .input input,select,textarea{
     padding: 0.5rem;
 }
 
-main .container .content form .table tbody tr .button .submit button{
+main .container .content form .table tbody tr .button .submit .btn{
     padding: 0.5rem 1.2rem;
     height: min-content;
     background-color: #2273B9;
+    color: whitesmoke;
     border: none;
     text-transform: capitalize;
 }
 
+main .container .content form .table tbody tr .button .submit .btn:hover{
+    background-color: #a4c5e2;
+    color: #2273B9;
+}
+
+#form {
+    border: 1px solid #2273B9;
+    border-radius: 3px;
+    padding: 1rem 0.5rem 0 0.5rem;
+}
+
+#h2 {
+    background-color: #2273B9;
+    color: whitesmoke;
+    position: absolute;
+    top: 18%;
+    left: 16%;
+    padding: 0.5rem;
+    font-size: 18px;
+}
+
+main .container .content .form .diplomas {
+    margin: 1rem 0;
+}
+
+main .container .content .form .diplomas .table {
+    border: none;
+}
+
+main .container .content .form .diplomas .table thead .tr {
+    background-color: #2273B9;
+    color: whitesmoke;
+}
+
+main .container .content .form .diplomas .table thead .tr th {
+    font-weight: 300;
+    padding: 1rem 0.5rem
+}
+
+main .container .content .form .diplomas .table tbody tr {
+    border: none;
+}
