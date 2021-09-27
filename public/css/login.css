@@ -13,37 +13,41 @@ main .container .contents {
     justify-content: center;
     max-width: 50%;
     padding: 2rem;
+    border: solid 1px #2273B9;
 }
 
 main .container .contents .h1 {
     font-size: 25px;
-    padding: 2rem;
+    padding: 0 2rem 2rem;
+    margin-bottom: 0;
 }
 
 main .container .contents form {
-    max-width: 66%;
+    width: 80%;
 }
 
-main .container .contents form .email.password {
+main .container .contents form #infos {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-main .container .contents form .email.password label {
+main .container .contents form #infos label {
     font-size: 15px;
     font-weight: 500;
     width: 50%;
 }
 
-main .container .contents form input {
-    width: 70%;
+main .container .contents form #infos input {
+    width: 80%;
     border: #2273B9 1px solid;
 }
 
 main .container .contents form .button {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 main .container .contents form .button .right {
