@@ -1,5 +1,5 @@
 <?php include_once APPROOT . '../views/inc/headerSignUp.php'; ?>
-<!-- <?php var_dump($data); ?> -->
+
 
 <main>
     <div class="container row p-0" id="container">
@@ -11,7 +11,7 @@
                         <tbody>
 
                             <tr id="error">
-                                <?php if(!empty($data->error_message)){ ?><h6 class="text-danger"><?php echo '*' . $data->error_message . '*'; ?></h6><?php } ?>
+                                <?php if(!empty($data['error_message'])){ ?><h6 class="text-danger"><?php echo '*' . $data['error_message'] . '*'; ?></h6><?php } ?>
                             </tr>
 
                             <tr class="light">
@@ -19,12 +19,12 @@
                                     <label for="email">Entrer votre adresse Email d'authentification: <span class="text-danger">*</span></label>
                                 </td>
                                 <td class="input">
-                                    <input type="email" name="email" id="email" value="<?php echo $data->email; ?>">
+                                    <input type="email" name="email" id="email" <?php if(!empty($data1)) { ?> value="<?php echo $data1->email; ?>" <?php }else { ?> value="<?php echo $data->email; ?>" <?php } ?>>
                                 </td>
                             </tr>
                             <tr class="dark">
                                 <td class="row">
-                                    <label for="password" <?php if(!empty($data->error_password)) : ?> class="text-danger" <?php endif; ?>>Créer Votre mot de passe: <span class="text-danger">*</span></label>
+                                    <label for="password" <?php if(!empty($data['error_password'])) : ?> class="text-danger" <?php endif; ?>>Créer Votre mot de passe: <span class="text-danger">*</span></label>
                                 </td>
                                 <td class="input">
                                     <input type="password" name="password" id="password">
@@ -32,7 +32,7 @@
                             </tr>
                             <tr class="light">
                                 <td class="row">
-                                    <label for="check_password" <?php if(!empty($data->error_check)) : ?> class="text-danger" <?php endif; ?>>Confirmer votre mot de passe: <span class="text-danger">*</span></label>
+                                    <label for="check_password" <?php if(!empty($data['error_check'])) : ?> class="text-danger" <?php endif; ?>>Confirmer votre mot de passe: <span class="text-danger">*</span></label>
                                 </td>
                                 <td class="input">
                                     <input type="password" name="check_password" id="check_password">
