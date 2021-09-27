@@ -24,7 +24,7 @@
                                         <input type="text" name="name_diploma" id="diploma">
                                     </td>
                                 </tr>
-                                <tr class="dark">
+                                <tr class="light">
                                     <td class="row">
                                         <label for="level" <?php if(!empty($data['error_level'])) : ?> class="text-danger" <?php endif; ?>>Niveau: <span class="text-danger">*</span></label>
                                     </td>
@@ -60,7 +60,7 @@
                                     <td></td>
                                     <td class="button">
                                         <div class="submit">
-                                            <button type="ajouter" class="btn">Ajouter</button>
+                                            <button type="ajouter" class="btn" id="btn">Ajouter</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -86,11 +86,11 @@
                                         <td><?= $diploma->date_diploma; ?></td>
                                         <td><?= $diploma->level; ?></td>
                                         <td><?= $diploma->etablissement; ?></td>
-                                        <td>
+                                        <td class="user">
                                             <form action="<?= URLROOT ?>/UsersController/deleteDiploma" method="post">
                                                 <input type="hidden" name="id_user" value="<?php echo $diploma->id_user; ?>">
                                                 <input type="hidden" name="id_diploma" value="<?php echo $diploma->id_diploma; ?>">
-                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                <button type="submit" class="btn">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -98,7 +98,7 @@
                                 </tbody>
                             </table>
                             <div class="submit">
-                                <button type="submit" class="btn"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/experiencesPage">Suivant</a>
+                                <button type="submit" class="btn" id="btn"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/experiencesPage">Suivant</a>
                                 </button>
                             </div>
                     </div>

@@ -561,6 +561,15 @@ class UsersController extends Controller
 
     // Navigate To Page Create Email & Password
     public function infosLogin() {
+        $data = [
+            'id_user' => '',
+            'password' => '',
+            'check' => '',
+            'error_password' => '',
+            'error_check' => '',
+            'error_match' => '',
+            'error_message' => ''
+        ];
         $id_user = ['id_user' => $_POST['id_user']];
         $email = $this->userModel->getEmail($id_user);
         $this->view('users/infosLogin', $email);

@@ -48,7 +48,7 @@ main .container .content form .table tbody tr .input input,select,textarea{
     padding: 0.5rem;
 }
 
-main .container .content form .table tbody tr .button .submit .btn{
+#btn{
     padding: 0.5rem 1.2rem;
     height: min-content;
     background-color: #2273B9;
@@ -57,9 +57,9 @@ main .container .content form .table tbody tr .button .submit .btn{
     text-transform: capitalize;
 }
 
-main .container .content form .table tbody tr .button .submit .btn:hover{
+#btn:hover{
     background-color: #a4c5e2;
-    color: #2273B9;
+    color: #0d76d1;
 }
 
 #form {
@@ -78,24 +78,31 @@ main .container .content form .table tbody tr .button .submit .btn:hover{
     font-size: 18px;
 }
 
-main .container .content .form .diplomas {
+main .container .content .form .diplomas, .experiences, .languages, .competences {
     margin: 1rem 0;
 }
 
-main .container .content .form .diplomas .table {
-    border: none;
-}
-
-main .container .content .form .diplomas .table thead .tr {
+main .container .content .form .diplomas, .experiences, .languages, .competences .table thead .tr {
     background-color: #2273B9;
     color: whitesmoke;
 }
 
-main .container .content .form .diplomas .table thead .tr th {
+main .container .content .form .diplomas, .experiences, .languages, .competences .table thead .tr th {
     font-weight: 300;
     padding: 1rem 0.5rem
 }
 
-main .container .content .form .diplomas .table tbody tr {
-    border: none;
+main .container .content .form .diplomas, .experiences, .languages, .competences .table tbody tr {
+    border-bottom: #2273B9 solid;
+}
+
+main .container .content .form .diplomas, .experiences, .languages, .competences .table tbody tr .user form .btn{
+    color: whitesmoke;
+    background-color: #F96D6D;
+    outline: none;
+}
+
+main .container .content .form .diplomas, .experiences, .languages, .competences .table tbody tr .user form .btn:hover{
+    color: #f35151;
+    background-color: #f59494;
 }

@@ -1,42 +1,48 @@
-<?php include_once APPROOT . '../views/inc/header.php'; ?>
+<?php include_once APPROOT . '../views/inc/headerSignUp.php'; ?>
 
 <main>
-    <div class="container">
-        <h1 class="text-light p-2" style="background-color: #2273B9;">Experiences</h1>
-        <div class="container row">
-                <form action="<?php echo URLROOT; ?>/UserController/addExperience" method="post">
-                    <table class="table table-striped">
+<div class="container row p-0" id="container">
+    <div class="vid col-2 p-0"></div>
+    <div class="content col-10 p-0">
+        <h2 class="h2" id="h2">Ajoutez un ou plusieurs diplômes experiences</h2>
+            <div class="form">
+                <form action="<?php echo URLROOT; ?>/UserController/addExperience" method="post" id="form">
+                    <table class="table" id="table">
                         <tbody>
-                            <?php if(!empty($data['error_message'])){ ?><h6 class="text-danger"><?php echo '*' . $data['error_message'] . '*';} ?></h6>
+                            
                             <tr>
-                                <td>
+                                <?php if(!empty($data['error_message'])){ ?><h6 class="text-danger"><?php echo '*' . $data['error_message'] . '*';} ?></h6>
+                            </tr>
+
+                            <tr class="light">
+                                <td class="row">
                                     <label for="start_date" <?php if(!empty($data['error_start_date'])) : ?> class="text-danger" <?php endif; ?>>Date début:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <input type="date" name="start_date" id="start_date">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="dark">
+                                <td class="row">
                                     <label for="end_date" <?php if(!empty($data['error_start_date'])) : ?> class="text-danger" <?php endif; ?>>Date fin:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <input type="date" name="end_date" id="end_date">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="light">
+                                <td class="row">
                                     <label for="company" <?php if(!empty($data['error_company'])) : ?> class="text-danger" <?php endif; ?>>Société:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <input type="text" name="company" id="company">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="dark">
+                                <td class="row">
                                     <label for="type_contract" <?php if(!empty($data['error_type_contract'])) : ?> class="text-danger" <?php endif; ?>>Type de contrat:</label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <select name="type_contract" id="type_contract">
 
                                         <option value="null">- Sélectionner -</option>
@@ -46,46 +52,47 @@
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="light">
+                                <td class="row">
                                     <label for="function" <?php if(!empty($data['error_function'])) : ?> class="text-danger" <?php endif; ?>>Fonction:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <textarea name="function" id="function" cols="80" rows="5" class="control show-character-counter" maxlength="140"></textarea>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="dark">
+                                <td class="row">
                                     <label for="area" <?php if(!empty($data['error_area'])) : ?> class="text-danger" <?php endif; ?>>Secteur:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <textarea name="area" id="area" cols="80" rows="5" class="control show-character-counter" maxlength="140"></textarea>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
+                            <tr class="light">
+                                <td class="row">
                                     <label for="details" <?php if(!empty($data['error_details'])) : ?> class="text-danger" <?php endif; ?>>Details:<span class="text-danger"> *</span></label>
                                 </td>
-                                <td>
+                                <td class="input">
                                     <textarea name="details" id="details" cols="80" rows="5" class="control show-character-counter" maxlength="140"></textarea>
                                 </td>
                             </tr>
-                            <tr>
                                 <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_user']; ?>">
-                            <tr>
+                            <tr class="dark">
                                 <td></td>
-                                <td>
-                                    <button type="submit" class="btn btn-success text-light">Ajouter</button>
+                                <td class="button">
+                                    <div class="submit">
+                                        <button type="ajouter" class="btn" id="btn">Ajouter<button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </form>
                 <?php if(!empty($data1)) : ?>
-                <div class="table mb-5 mt-3">
+                <div class="experiences">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="tr">
                                 <th>Date début</th>
                                 <th>Date fin</th>
                                 <th>Société</th>
@@ -102,7 +109,7 @@
                                 <td><?php echo $experience->company; ?></td>
                                 <td><?php echo $experience->type_contract; ?></td>
                                 <td><?php echo $experience->function; ?></td>
-                                <td>
+                                <td class="user">
                                     <form action="<?= URLROOT ?>/UsersController/deleteExperience" method="post">
                                         <input type="hidden" name="id_user" value="<?php echo $experience->id_user; ?>">
                                         <input type="hidden" name="id_experience" value="<?php echo $experience->id_experience; ?>">
@@ -113,12 +120,18 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-primary"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/languagesPage">Suivant</a></button>
+                    <div class="submit">
+                        <button type="submit" class="btn" id="btn"><a class="text-light text-decoration-none" href="<?= URLROOT ?>/UsersController/languagesPage">Suivant</a>
+                        </button>
+                    </div>
                 </div>
                 <?php endif; ?>
-        </div>
+            </div>
     </div>
+</div>
 </main>
+
+<?php include_once APPROOT . '../views/inc/footer.php'; ?>
 
 </body>
 </html>
