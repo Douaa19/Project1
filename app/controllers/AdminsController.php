@@ -119,13 +119,14 @@ class AdminsController extends Controller
             'mission' => $_POST['mission'],
             'profil' => $_POST['profil'],
             'experience' => $_POST['experience'],
+            'required_profile' => $_POST['required_profile'],
+            'diploma_formation' => $_POST['diploma_formation'],
+            'required_qualitie' => $_POST['required_qualitie'],
+            'place_activity' => $_POST['place_activity'],
             'error_message' => ''
         ];
 
-        if (empty($data['title']) || empty($data['date']) || empty($data['city']) || empty($data['type_contrat']) || empty($data['poste']) || empty($data['mission']) || empty($data['profil']) || empty($data['experience'])) {
-            $data['error'] = 'Il faut remplire tout les champs';
-            $this->view('admin/addOffre', $data);
-        }else {
+        if (!empty($data['title']) || !empty($data['date']) || !empty($data['city']) || !empty($data['type_contrat']) || !empty($data['poste']) || !empty($data['mission']) || !empty($data['profil']) || !empty($data['experience']) || !empty($data['required_profile']) || !empty($data['diploma_formation']) || !empty($data['required_qualitie']) || !empty($data['place_activity'])) {
             $insert = $this->adminModel->addOffre($data);
             if ($insert) {
                 header('Location: ' . URLROOT . '/AdminsController/getOffres');
@@ -133,7 +134,9 @@ class AdminsController extends Controller
                 $data['error_message'] = "Il y a un error au niveau de la requette";
                 $this->view('admin/addOffre', $data);
             }
-            
+        }else {
+            $data['error'] = 'Il faut remplire tout les champs';
+            $this->view('admin/addOffre', $data);
         }
     }
 

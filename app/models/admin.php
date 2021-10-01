@@ -35,13 +35,17 @@ class admin
 
     // Insert Offres Into Database
     public function addOffre($data) {
-        $this->db->query("INSERT INTO `offres`(`date`, `title`, `city`, `type_contrat`, `poste`, `mission`, `profil`, `experience`) VALUES (:date, :title, :city, :type_contrat, :poste, :mission, :profil, :experience)");
+        $this->db->query("INSERT INTO `offres`(`date`, `title`, `city`, `type_contrat`, `poste`, `mission`, `required_profile`, `diploma_formation`, `required_qualitie`, `place_activity`, `profil`, `experience`) VALUES (:date, :title, :city, :type_contrat, :poste, :mission, :required_profile, :diploma_formation, :required_qualitie, :place_activity, :profil, :experience)");
         $this->db->bind(':date', $data['date']);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':city', $data['city']);
         $this->db->bind(':type_contrat', $data['type_contrat']);
         $this->db->bind(':poste', $data['poste']);
         $this->db->bind(':mission', $data['mission']);
+        $this->db->bind(':required_profile', $data['required_profile']);
+        $this->db->bind(':diploma_formation', $data['diploma_formation']);
+        $this->db->bind(':required_qualitie', $data['required_qualitie']);
+        $this->db->bind(':place_activity', $data['place_activity']);
         $this->db->bind(':profil', $data['profil']);
         $this->db->bind(':experience', $data['experience']);
 

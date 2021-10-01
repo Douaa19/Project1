@@ -1,4 +1,5 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
+<?php var_dump($data); ?>
 
 <main id="main">
     <div class="container row p-0" id="container">
@@ -30,6 +31,22 @@
                     <label for="mission">Mission</label>
                     <textarea name="mission" id="mission" cols="40" rows="5"></textarea>
                 </div>
+                <div class="required_profile">
+                    <label for="required_profile">Profil recherché: </label>
+                    <input type="text" name="required_profile" id="required_profile">
+                </div>
+                <div class="diploma_formation">
+                    <label for="diploma_formation">Diplôme/Formation: </label>
+                    <input type="text" name="diploma_formation" id="diploma_formation">
+                </div>
+                <div class="required_qualitie">
+                    <label for="required_qualitie">Qualités requises: </label>
+                    <input type="text" name="required_qualitie" id="required_qualitie">
+                </div>
+                <div class="place_activity">
+                    <label for="place_activity">Lieu d'activité: </label>
+                    <input type="text" name="place_activity" id="place_activity">
+                </div>
                 <div class="profil">
                     <label for="profil">Profil: </label>
                     <input type="text" name="profil" id="profil">
@@ -38,13 +55,16 @@
                     <label for="experience">Experience: </label>
                     <input type="text" name="experience" id="experience">
                 </div>
-                <button type="submit">Ajouter</button>
+                
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
             </form>
         </div>
     </div>
 </main>
 
-<?php include_once APPROOT . '../views/inc/footer.php'; ?>
+<!-- <?php include_once APPROOT . '../views/inc/footer.php'; ?> -->
 
 </body>
 </html>
