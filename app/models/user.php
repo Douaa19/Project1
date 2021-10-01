@@ -398,5 +398,32 @@ class user
             return false;
         }
     }
+
+
+    // Get All Offres From Database
+    public function getOffres() {
+        $this->db->query("SELECT * FROM offres");
+        $offres = $this->db->resultSet();
+
+        if ($offres) {
+            return $offres;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Get All Details For One Offre With Id_Offre
+    public function getDetails($id_offre) {
+        $this->db->query("SELECT * FROM offres WHERE id_offre = :id_offre");
+        $this->db->bind(':id_offre', $id_offre);
+
+        $details = $this->db->single();
+        if ($details) {
+            return $details;
+        }else {
+            return false;
+        }
+    }
     
 }

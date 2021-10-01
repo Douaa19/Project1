@@ -62,7 +62,7 @@ class UsersController extends Controller
                     $this->session->setSession('id_user',$user->id_user);
                     $this->session->setSession('fName',$user->fName);
                     $this->session->setSession('lName',$user->lName);
-                    $this->view('users/homePage');
+                    header('Location: ' . URLROOT . '/UsersController/getOffres');
                 }else {
                     $data['error_password'] = "Le mot de passe est incorrect";
                     $data['email'] = $this->userModel->checkUserEmail($data);
@@ -636,12 +636,43 @@ class UsersController extends Controller
             $email = $this->userModel->getEmail($data);
             $this->view('users/infosLogin', $data, $email);
         }
+    }
 
 
-// echo '<pre>';
-// var_dump($data);
-// echo '</pre>';
-// die();
+    // Get All Offres From Table
+    public function getOffres() {
+        $offres = $this->userModel->getOffres();
+        if ($offres) {
+            $this->view('users/homePage', $offres);
+        }else {
+            $data['error_message'] = "Aucun offre trouvé!";
+            $this->view('users/homePage', $data);
+        }
+    }
+
+
+    // Get All Details For One Offre
+    public function detailsOffre() {
+        $id_offre = $_POST['id_offre'];
+
+        $details = $this->userModel->getDetails($id_offre);
+        if ($details) {
+            $this->view('users/detailsOffre', $details);
+        }else {
+            $data['error_message'] = "Il y a un problème au niveau de la base de donné";
+            $this->view('users/detailsOffre', $data);
+        }
+    }
+
+
+    // Method toApply By One User For One Offre
+    public function toApply() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'id_offre' => $_POST['id_offre']
+        ];
+
+        var_dump($data);
     }
 
 
