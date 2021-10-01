@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="<?= URLROOT?>/css/dashboard.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/footer.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/login.css">
+    <link rel="stylesheet" href="<?= URLROOT?>/css/main.css">
+    <link rel="stylesheet" href="<?= URLROOT?>/css/offres.css">
+
 </head>
 <body>
     <header class="header">
@@ -30,7 +33,7 @@
             </div>
             <ul class="nav justify-content-end col-8">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">condida</a>
+                    <a class="nav-link" href="#">condidat</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">entreprise</a>
@@ -44,6 +47,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">actualités</a>
                 </li>
+                <?php
+                if(isset($_SESSION['id_admin'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= URLROOT ?>/AdminsController/logout">Déconnexion</a>
+                </li>
+                <?php } ?>
+                <?php
+                if(isset($_SESSION['id_user'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= URLROOT ?>/UsersController/logoutUser">Déconnexion</a>
+                </li>
+                <?php } ?>
             </ul>
         </div>
     </header>

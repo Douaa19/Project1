@@ -2,8 +2,8 @@
 
 
 <main>
-    <div class="container row p-0">
-    <div class="vid col-2 p-0"></div>
+    <div class="container row p-0" id="container">
+      <div class="vid col-2 p-0"></div>
       <div class="content col-10 p-0">
         <h2 class="h2">Espace condidature</h2>
         <form action="<?php echo URLROOT; ?>/UsersController/stepOneInsertUser" method="post" class="" enctype="multipart/form-data">
