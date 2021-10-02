@@ -416,11 +416,40 @@ class user
     // Get All Details For One Offre With Id_Offre
     public function getDetails($id_offre) {
         $this->db->query("SELECT * FROM offres WHERE id_offre = :id_offre");
-        $this->db->bind(':id_offre', $id_offre);
+        $this->db->bind(':id_offre', $id_offre['id_offre']);
 
         $details = $this->db->single();
         if ($details) {
             return $details;
+        }else {
+            return false;
+        }
+    }
+
+
+    // Insert Ids for Users Who Applied For Particulare Offre
+    public function addToApply($data) {
+        $this->db->query("INSERT INTO `toapply`(`id_user`, `id_offre`) VALUES (:id_user, :id_offre)");
+        $this->db->bind(':id_user', $data['id_user']);
+        $this->db->bind(':id_offre', $data['id_offre']);
+
+        $result = $this->db->execute();
+        if ($result) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    public function checkApply($data) {
+        $this->db->query("SELECT * FROM toapply WHERE id_user = :id_user AND id_offre = :id_offre");
+        $this->db->bind(':id_user', $data['id_user']);
+        $this->db->bind(':id_offre', $data['id_offre']);
+
+        $result = $this->db->single();
+        if ($result) {
+            return $result;
         }else {
             return false;
         }

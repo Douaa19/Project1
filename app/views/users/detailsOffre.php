@@ -1,4 +1,6 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
+<!-- <?php var_dump($_SESSION); ?>
+<?php var_dump($data1); ?> -->
 
 <main>
     <div class="container p-0 row">
@@ -6,6 +8,8 @@
         <div class="content col-10">
             <h2>Offre d'emploi</h2>
             <div class="details">
+                <?php if(!empty($data1['success_message'])) { ?><span><?= $data1['success_message']; ?></span><?php } ?>
+                <?php if(!empty($data1['error_message'])) { ?><span><?= $data1['error_message']; ?></span><?php } ?>
                 <div class="title">
                     <?php if(!empty($data->title)) : ?>
                         <span class="value" id="titte"><?= $data->title; ?></span>

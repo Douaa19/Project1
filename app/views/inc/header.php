@@ -15,7 +15,6 @@
     <script src="<?php echo URLROOT ?>/js/navbar.js"></script>
     <title>Login Page</title>
     <link rel="stylesheet" href="<?= URLROOT?>/css/header.css">
-    <link rel="stylesheet" href="<?= URLROOT?>/css/dashboard.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/footer.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/login.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/main.css">

@@ -653,9 +653,9 @@ class UsersController extends Controller
 
     // Get All Details For One Offre
     public function detailsOffre() {
-        $id_offre = $_POST['id_offre'];
+        $data = ['id_offre' => $_POST['id_offre']];
 
-        $details = $this->userModel->getDetails($id_offre);
+        $details = $this->userModel->getDetails($data);
         if ($details) {
             $this->view('users/detailsOffre', $details);
         }else {
@@ -672,7 +672,25 @@ class UsersController extends Controller
             'id_offre' => $_POST['id_offre']
         ];
 
-        var_dump($data);
+        $checkApply = $this->userModel->checkApply($data);
+        if ($checkApply->id_user = $data['id_user'] && $checkApply->id_offre = $data['id_offre']) {
+            $details = $this->userModel->getDetails($data);
+            $data['error_message'] = "Vous avez déjà postulé pour cet offre";
+            $this->view('users/detailsOffre', $details, $data);
+        }else {
+            $insert = $this->userModel->addToApply($data);
+            if ($insert) {
+                $details = $this->userModel->getDetails($data);
+                $data['success_message'] = "Vous avez postulé pour cet offre";
+                $this->view('users/detailsOffre', $details, $data);
+            }else {
+                $details = $this->userModel->getDetails($data);
+                $data['error_message'] = "Vous n'avez pas postulé pour cet offre";
+                $this->view('users/detailsOffre', $details, $data);
+            }
+        }
+
+        
     }
 
 
