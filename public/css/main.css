@@ -40,5 +40,15 @@ main .container .content .details .title span {
 }
 
 main .container .content .details .title form .submit {
-    
+    outline: none;
+    background-color: #157347;
+    color: whitesmoke;
+    padding: 0.5rem;
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+}
+
+main .container .content .details .title form .submit:hover {
+    background-color: #68a589;
 }
