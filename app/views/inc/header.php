@@ -16,9 +16,12 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="<?= URLROOT?>/css/header.css">
     <link rel="stylesheet" href="<?= URLROOT?>/css/footer.css">
+    <?php if(!isset($_SESSION['id_user']) && !isset($_SESSION['id_admin'])) { ?>
     <link rel="stylesheet" href="<?= URLROOT?>/css/login.css">
-    <link rel="stylesheet" href="<?= URLROOT?>/css/main.css">
-    <link rel="stylesheet" href="<?= URLROOT?>/css/offres.css">
+    <?php } ?>
+    <?php if(isset($_SESSION['id_user'])) { ?>
+        <link rel="stylesheet" href="<?= URLROOT?>/css/main.css"> 
+    <?php } ?>
 
 </head>
 <body>

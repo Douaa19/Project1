@@ -6,7 +6,7 @@
     <div class="container p-0 row">
         <div class="vid p-0 col-2"></div>
         <div class="content col-10">
-            <h2>Offre d'emploi</h2>
+            <h2 class="h2">Offre d'emploi</h2>
             <div class="details">
                 <?php if(!empty($data1['success_message'])) { ?><span><?= $data1['success_message']; ?></span><?php } ?>
                 <?php if(!empty($data1['error_message'])) { ?><span><?= $data1['error_message']; ?></span><?php } ?>
@@ -16,7 +16,7 @@
                         <form action="<?= URLROOT ?>/UsersController/toApply" method="post">
                             <input type="hidden" name="id_offre" value="<?= $data->id_offre; ?>">
                             <input type="hidden" name="id_user" value="<?= $_SESSION['id_user']; ?>">
-                            <button type="submit" class="btn btn-success">Postuler</button>
+                            <button type="submit" class="submit">Postuler</button>
                         </form>
                     <?php endif; ?>
                 </div>
