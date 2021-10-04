@@ -1,8 +1,8 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
-<?php var_dump($_SESSION); ?>
+<!-- <?php var_dump($_SESSION); ?> -->
 
 <main>
-     <div class="container row">
+    <div class="container row">
         <div class="vid col-2"></div>
         <div class="content col-10">
             <h2 class="h2">Offres</h2>
@@ -32,8 +32,7 @@
                 </table>
             </div>
         </div>
-        
-    </div> 
+    </div>
 </main>
 
 <?php include_once APPROOT . '../views/inc/footer.php'; ?>

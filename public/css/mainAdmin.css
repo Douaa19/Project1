@@ -1,0 +1,121 @@
+/* Style For MainsAdmin And Dashboard */
+main .container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+main .container .content .h2 {
+    color: #2273B9;
+    font-size: 28px;
+    margin-bottom: 1rem;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+main .container .content .addButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+main .container .content .addButton .btn {
+    background-color: #0d76d1;
+    color: whitesmoke;
+}
+
+main .container .content .addButton .btn  a{
+    text-decoration: none;
+}
+
+main .container .content .addButton .btn:hover {
+    background-color: #2273B9;
+}
+
+main .container .content .cards .card {
+    padding: 0.5rem;
+}
+
+main .container .content .cards .card .group {
+    padding: 0.5rem;
+    font-size: 14px;
+}
+
+main .container .content .cards .card .group .title {
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+main .container .content .cards .card .group p {
+    margin: 0;
+}
+
+main .container .content .cards .card .tooGroups {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .container .content .cards .card .group .T {
+    font-weight: 500;
+}
+
+main .container .content .cards .card form .btn {
+    background-color: #F96D6D;
+    color: whitesmoke;
+}
+
+main .container .content .cards .card form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+main .container .content .cards .card form .btn:hover {
+    background-color: #f59494;
+}
+/* Style For MainsAdmin And Dashboard */
+
+/* Style For addOffre Page */
+
+main .container .content form .inputs {
+    border: #0d76d1 1px solid;
+    border-radius: 5px;
+    width: 38rem;
+    position: relative;
+    left: 25%;
+    padding: 2rem 3rem;
+}
+
+main .container .content form .inputs #group {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+main .container .content form .inputs #group input, input, textarea {
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding: 0.2rem;
+    width: 60%;
+    color: #0d76d1;
+}
+
+main .container .content form .inputs .button {
+    display: flex;
+    justify-content: center;
+}
+
+main .container .content form .inputs .button button {
+    background-color: #0d76d1;
+    color: whitesmoke;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+main .container .content form .inputs .button button:hover {
+    background-color: #2273B9;
+}
+/* Style For addOffre Page */

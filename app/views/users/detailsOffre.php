@@ -8,84 +8,113 @@
         <div class="content col-10">
             <h2 class="h2">Offre d'emploi</h2>
             <div class="details">
-                <?php if(!empty($data1['success_message'])) { ?><span><?= $data1['success_message']; ?></span><?php } ?>
-                <?php if(!empty($data1['error_message'])) { ?><span><?= $data1['error_message']; ?></span><?php } ?>
-                <div class="title">
-                    <?php if(!empty($data->title)) : ?>
+                <?php if(!empty($data1['success_message'])) { ?><span class="success_message"><?= $data1['success_message']; ?></span><?php } ?>
+                <?php if(!empty($data1['error_message'])) { ?><span class="error_message"><?= $data1['error_message']; ?></span><?php } ?>
+                
+                <?php if(!empty($data->title)) : ?>
+                    <div class="title">
                         <span class="value" id="titte"><?= $data->title; ?></span>
                         <form action="<?= URLROOT ?>/UsersController/toApply" method="post">
                             <input type="hidden" name="id_offre" value="<?= $data->id_offre; ?>">
                             <input type="hidden" name="id_user" value="<?= $_SESSION['id_user']; ?>">
                             <button type="submit" class="submit">Postuler</button>
                         </form>
-                    <?php endif; ?>
-                </div>
-                <div class="date">
-                    <?php if(!empty($data->date)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->date)) : ?>
+                    <div class="date" id="groupe">
                         <span class="value"><?= $data->date; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="city">
-                    <?php if(!empty($data->city)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->city)) : ?>
+                    <div class="city" id="groupe">
                         <span>Ville: </span>
                         <span class="value"><?= $data->city; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="type_contrat">
-                    <?php if(!empty($data->type_contrat)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->type_contrat)) : ?>
+                    <div class="type_contrat" id="groupe">
                         <span>Type de contrat: </span>
                         <span class="value"><?= $data->type_contrat; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="poste">
-                    <?php if(!empty($data->poste)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->poste)) : ?>
+                    <div class="poste" id="groupe">
                         <span>Poste: </span>
                         <p class="value"><?= $data->poste; ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="mission">
-                    <?php if(!empty($data->mission)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->mission)) : ?>
+                    <div class="mission" id="groupe">
                         <span>Mission: </span>
                         <p class="value"><?= $data->mission; ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="required_profile">
-                    <?php if(!empty($data->required_profile)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->required_profile)) : ?>
+                    <div class="required_profile" id="groupe">
                         <span>Profil recherché: </span>
                         <span class="value"><?= $data->required_profile; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="diploma_formation">
-                    <?php if(!empty($data->diploma_formation)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->diploma_formation)) : ?>
+                    <div class="diploma_formation" id="groupe">
                         <span>Diplôme/Formation: </span>
                         <span class="value"><?= $data->diploma_formation; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="require_quelitie">
+                    </div>
+                <?php endif; ?>
+                
+                
                     <?php if(!empty($data->required_qualitie)) : ?>
+                    <div class="require_quelitie" id="groupe">
                         <span>Qualités requises: </span>
                         <span class="value"><?= $data->required_qualitie; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="place_activity">
-                    <?php if(!empty($data->place_activity)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->place_activity)) : ?>
+                    <div class="place_activity" id="groupe">
                         <span>Lieu d'activité: </span>
                         <span class="value"><?= $data->place_activity; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="profil">
-                    <?php if(!empty($data->profil)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->profil)) : ?>
+                    <div class="profil" id="groupe">
                         <span>Profile: </span>
                         <span class="value"><?= $data->profil; ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="experience">
-                    <?php if(!empty($data->experience)) : ?>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <?php if(!empty($data->experience)) : ?>
+                    <div class="experience" id="groupe">
                         <span>Experience: </span>
                         <span class="value"><?= $data->experience; ?></span>
-                    <?php endif; ?>
-                </div>
+                    </div>
+                <?php endif; ?>
+                
             </div>
         </div>
     </div>
 </main>
+
+<?php include_once APPROOT . '../views/inc/footer.php'; ?>
+
+</body>
+</html>

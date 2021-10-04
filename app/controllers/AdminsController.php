@@ -99,7 +99,8 @@ class AdminsController extends Controller
 
     // Navigate To Offres Page
     public function offres() {
-        $this->view('admin/offres');
+        $offres = $this->adminModel->getOffres();
+        $this->view('admin/offres', $offres);
     }
 
 

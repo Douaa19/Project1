@@ -22,6 +22,9 @@
     <?php if(isset($_SESSION['id_user'])) { ?>
         <link rel="stylesheet" href="<?= URLROOT?>/css/main.css"> 
     <?php } ?>
+    <?php if(isset($_SESSION['id_admin'])) { ?>
+        <link rel="stylesheet" href="<?= URLROOT?>/css/mainAdmin.css"> 
+    <?php } ?>
 
 </head>
 <body>

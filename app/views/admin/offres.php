@@ -5,55 +5,90 @@
     <div class="container row p-0">
         <div class="vid col-2 p-0"></div>
         <div class="content col-10 p-0">
-            <h1>offres</h1>
+            <h2 class="h2">offres</h2>
             <div class="addButton">
-                <button class="btn btn-primary" type="submit"><a href="<?= URLROOT ?>/AdminsController/addOffrePage" class="text-light">Ajouter</a></button>
+                <button class="btn" type="submit"><a href="<?= URLROOT ?>/AdminsController/addOffrePage" class="text-light">Ajouter offre</a></button>
             </div>
             <div class="row cards">
                 <?php if (!empty($data)) { ?>
                 <?php foreach($data as $offre) : ?>
                 <div class="card col-5">
                     <?php if(!empty($offre->title)) : ?>
-                        <span class="col-6">Titre: <?= $offre->title; ?></span>
+                        <div class="group">
+                            <span class="value title"><?= $offre->title; ?></span>
+                        </div>
                     <?php endif; ?>
-                    <?php if(!empty($offre->date)) : ?>
-                        <span class="col-6"><?= $offre->date; ?></span>
-                    <?php endif; ?>
-                    <?php if(!empty($offre->city)) : ?>
-                        <span class="col-12">Ville: <?= $offre->city; ?></span>
-                    <?php endif; ?>
+                    <div class="tooGroups">
+                        <?php if(!empty($offre->city)) : ?>
+                            <div class="group">
+                                <span class="T">Ville: </span>
+                                <span class="value"><?=     $offre->city; ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(!empty($offre->date)) : ?>
+                            <div class="group">
+                                <span class="T"></span>
+                                <span class="value"><?=     $offre->date; ?></span>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                     <?php if(!empty($offre->type_contrat)) : ?>
-                        <span class="col-12">Type de contrat: <?= $offre->type_contrat; ?></span>
+                        <div class="group">
+                            <span class="T">Type de contrat: </span>
+                            <span class="value"><?= $offre->type_contrat; ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->poste)) : ?>
-                        <span class="col-12">Poste: </span>
-                        <p class="col-12"><?= $offre->poste; ?></p>
+                        <div class="group">
+                            <span class="T">Poste: </span>
+                            <p  class="value"><?= $offre->poste; ?></p>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->mission)) : ?>
-                        <span class="col-12">Mission: </span>
-                        <p class="col-12"><?= $offre->mission; ?></p>
+                        <div class="group">
+                            <span class="T">Mission: </span>
+                            <p  class="value"><?= $offre->mission; ?></p>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->required_profile)) : ?>
-                        <span  class="col-12">Profil recherché: <?= $offre->required_profile ?></span>
+                        <div class="group">
+                            <span  class="T">Profil recherché: </span>
+                            <span class="value"><?= $offre->required_profile ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->diploma_formation)) : ?>
-                        <span  class="col-12">Diplôme/Formation: <?= $offre->diploma_formation ?></span>
+                        <div class="group">
+                            <span  class="T">Diplôme/Formation: </span>
+                            <span class="value"><?= $offre->diploma_formation ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->required_qualitie)) : ?>
-                        <span  class="col-12">Qualités requises: <?= $offre->required_qualitie ?></span>
+                        <div class="group">
+                            <span  class="T">Qualités requises: </span>
+                            <span class="value"><?= $offre->required_qualitie ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->place_activity)) : ?>
-                        <span  class="col-12">Lieu d'activité: <?= $offre->place_activity ?></span>
+                        <div class="group">
+                            <span  class="T">Lieu d'activité: </span>
+                            <span class="value"><?= $offre->place_activity ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->profil)) : ?>
-                        <span class="col-12">Profile: <?= $offre->profil; ?></span>
+                        <div class="group">
+                            <span class="T">Profile: </span>
+                            <span class="value"><?= $offre->profil; ?></span>
+                        </div>
                     <?php endif; ?>
                     <?php if(!empty($offre->experience)) : ?>
-                        <span class="col-12">Experience: <?= $offre->experience; ?></span>
+                        <div class="group">
+                            <span class="T">Experience: </span>
+                            <span class="value"><?= $offre->experience; ?></span>
+                        </div>
                     <?php endif; ?>
                     <form action="<?= URLROOT ?>/AdminsController/deleteOffre" method="post">
                         <input type="hidden" name="id_offre" value="<?= $offre->id_offre; ?>">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn">Supprimer</button>
                     </form>
                 </div>
                 <?php endforeach; ?>
@@ -65,6 +100,6 @@
     </div>
 </main>
 
-<!-- <?php include_once APPROOT . '../views/inc/footer.php'; ?> -->
+<?php include_once APPROOT . '../views/inc/footer.php'; ?>
 </body>
 </html>

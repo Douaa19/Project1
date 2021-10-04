@@ -673,7 +673,7 @@ class UsersController extends Controller
         ];
 
         $checkApply = $this->userModel->checkApply($data);
-        if ($checkApply->id_user = $data['id_user'] && $checkApply->id_offre = $data['id_offre']) {
+        if ($checkApply) {
             $details = $this->userModel->getDetails($data);
             $data['error_message'] = "Vous avez déjà postulé pour cet offre";
             $this->view('users/detailsOffre', $details, $data);

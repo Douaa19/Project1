@@ -13,7 +13,7 @@ main .container .content .h2 {
 }
 
 main .container .content .offres .table thead tr .th_offre{
-    font-weight: 100;
+    font-weight: 500;
 }
 
 main .container .content .offres .table tbody tr td form button {
@@ -23,19 +23,21 @@ main .container .content .offres .table tbody tr td form button {
 }
 
 main .container .content .details {
-    border: black 1px solid;
+    border-bottom: rgb(185, 185, 185) 1px solid;
+    border-top: rgb(185, 185, 185) 1px solid;
     padding: 0.5rem;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 main .container .content .details .title {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 main .container .content .details .title span {
     color: #2273B9;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
 }
 
@@ -51,4 +53,29 @@ main .container .content .details .title form .submit {
 
 main .container .content .details .title form .submit:hover {
     background-color: #68a589;
+}
+
+#groupe {
+    font-weight: 500;
+    padding: 0.2rem;
+}
+
+#groupe .value{
+    font-weight: 300;
+    margin: 0;
+}
+
+main .container .content .details .success_message, .error_message {
+    font-weight: 500;
+    font-size: 16px;
+    color: whitesmoke;
+    padding: 0.5rem;
+}
+
+main .container .content .details .success_message {
+    background-color: #42976f;
+}
+
+main .container .content .details .error_message {
+    background-color: #d4716e;
 }
