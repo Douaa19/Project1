@@ -165,6 +165,23 @@ class AdminsController extends Controller
     }
 
 
+    // Add More Informations For One User
+    public function addMoreInfos() {
+        $data = [
+            'id_user' => $_POST['id_user'],
+            'offre_emploi' => $_POST['offre_emploi'],
+            'cnss' => $_POST['cnss'],
+            'certificate' => $_POST['certificate'],
+            'illness_records' => $_POST['illness_records'],
+            'illness_records' => $_POST['illness_records']
+        ];
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+        die();
+    }
+
+
     // Go To View More Informations For One Specific User
     public function viewMore() {
         $id_user = $_POST['id_user'];
