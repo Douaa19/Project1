@@ -119,3 +119,52 @@ main .container .content form .inputs .button button:hover {
     background-color: #2273B9;
 }
 /* Style For addOffre Page */
+
+/* Style For Dashboard Page */
+main .container .content .table .thead tr th {
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+main .container .content .table {
+    text-align: center;
+}
+
+#cv {
+    color: #0d76d1;
+    text-decoration: none;
+}
+
+#cv:hover{
+    color: #2273B9;
+}
+
+#more {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#more form button {
+    color: whitesmoke;
+    border-radius: 3px;
+    padding: 0.3rem 0.8rem;
+    outline: none;
+    border: none;
+}
+
+#more form .viewMore {
+    background-color: #0d76d1;
+}
+
+#more form .viewMore:hover {
+    background-color: #2273B9;
+}
+
+#more form .addMore {
+    background-color: #027214;
+}
+#more form .addMore:hover {
+    background-color: #059c1e;
+}
+/* Style For Dashboard Page */

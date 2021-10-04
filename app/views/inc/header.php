@@ -36,25 +36,28 @@
                     <span class="">logo</span>
                 </div>
             </div>
-            <ul class="nav justify-content-end col-8">
-                <li class="nav-item">
+            <ul class="nav p-0 justify-content-end col-8">
+                <li class="nav-item m-0">
                     <a class="nav-link" href="#">condidat</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-0">
                     <a class="nav-link" href="#">entreprise</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-0">
                     <a class="nav-link" href="#">tout sur tectra</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-0">
                     <a class="nav-link" href="#">nos agences</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-0">
                     <a class="nav-link" href="#">actualités</a>
                 </li>
                 <?php
                 if(isset($_SESSION['id_admin'])) { ?>
-                <li class="nav-item">
+                <li class="nav-item m-0">
+                    <a class="nav-link" href="<?= URLROOT ?>/AdminsController/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item m-0">
                     <a class="nav-link" href="<?= URLROOT ?>/AdminsController/logout">Déconnexion</a>
                 </li>
                 <?php } ?>

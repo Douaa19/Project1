@@ -1,6 +1,6 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
-<!-- <?php var_dump($data); ?>
-<?php var_dump($_SESSION); ?> -->
+<?php var_dump($data); ?>
+<!-- <?php var_dump($_SESSION); ?> -->
     <main class="">
         <div class="container row p-0">
             <div class="vid col-2 p-0"></div>

@@ -65,8 +65,8 @@ class UsersController extends Controller
                     header('Location: ' . URLROOT . '/UsersController/getOffres');
                 }else {
                     $data['error_password'] = "Le mot de passe est incorrect";
-                    $data['email'] = $this->userModel->checkUserEmail($data);
-                    $this->view('users/index', $data);
+                    $email = $this->userModel->checkUserEmail($data);
+                    $this->view('users/index', $data, $email);
                 }
             }else {
                 $data['error_email'] = "L'address email n'existe pas";

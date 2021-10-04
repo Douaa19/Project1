@@ -4,11 +4,8 @@
 
 <main>
     <div class="container row">
-        <div class="logout col-2 m-4">
-            <a href="<?= URLROOT ?>/AdminsController/offres" class="btn btn-primary text-decoration-none text-center">Offres</a>
-        </div>
-        <div class="dashboard col-2 m-4">
-            <a href="<?= URLROOT ?>/AdminsController/dashboard" class="btn btn-primary text-decoration-none text-center">Bashboard</a>
-        </div>
+        <?php if(isset($_SESSION['id_admin'])) { ?>
+                <button class="btn"><a class="nav-link" href="<?= URLROOT ?>/AdminsController/dashboard">Dashboard</a></button>
+        <?php } ?>
     </div>
 </main>

@@ -43,17 +43,12 @@ header .container {
     font-size: 28px;
 }
 
-
-
-.container ul .nav {
-    padding: 0px !important;
-}
-
 .nav-item {
     margin: 0 12px;
 }
 
 header .container .nav-item a {
+    font-size: 14px;
     color: black;
     text-decoration: none;
     font-weight: bold;

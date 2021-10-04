@@ -34,7 +34,7 @@
                     </div>
                     <div id ="group" class="required_profile">
                         <label for="required_profile">Profil recherché: </label>
-                        <input type="text" name="required_profile" id="required_profile">
+                        <textarea name="required_profile" id="required_profile" cols="21" rows="5"></textarea>
                     </div>
                     <div id ="group" class="diploma_formation">
                         <label for="diploma_formation">Diplôme/Formation: </label>

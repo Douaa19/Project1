@@ -51,7 +51,8 @@ class AdminsController extends Controller
                 if ($checkAdmin->email == $data['email'] && $checkAdmin->password == $data['password']) {
                     $this->session->setSession('id_admin',$checkAdmin->id_admin);
                     $this->session->setSession('email',$checkAdmin->email);
-                    $this->view('admin/homePage');
+                    $offres = $this->adminModel->getOffres();
+                    $this->view('admin/offres', $offres);
                 }elseif($checkAdmin->email == $data['email'] && $checkAdmin->password !== $data['password']) {
                     $data['error_password'] = "Le mot de passe est incorrect";
                     $this->view('admin/index', $data);
@@ -95,12 +96,6 @@ class AdminsController extends Controller
             $data['error_message'] = "Il y a un erreur dans cette page";
             $this->view('admin/dashbord', $data);
         }
-    }
-
-    // Navigate To Offres Page
-    public function offres() {
-        $offres = $this->adminModel->getOffres();
-        $this->view('admin/offres', $offres);
     }
 
 
@@ -160,6 +155,24 @@ class AdminsController extends Controller
             $data['error_message'] = "L'offre n'a pas été supprimé";
             $this->view('admin/offre', $data);
         }
+    }
+
+
+    // Go To Add More Information For One Specific User
+    public function addMore() {
+        $id_user = $_POST['id_user'];
+        $this->view('admin/addMore', $id_user);
+    }
+
+
+    // Go To View More Informations For One Specific User
+    public function viewMore() {
+        $id_user = $_POST['id_user'];
+
+        // $moreInfos = $this->adminModel->getMoteInfos($id_user);
+        // if ($moreInfos) {
+            $this->view('admin/viewMore', $id_user);
+        // }
     }
 
 
