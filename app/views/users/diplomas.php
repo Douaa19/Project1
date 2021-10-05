@@ -71,7 +71,7 @@
                     <div class="diplomas">
                             <table class="table">
                                 <thead>
-                                    <tr class="tr">
+                                    <tr class="tr" id="tr">
                                         <th>Diplôme</th>
                                         <th>Date diplôme</th>
                                         <th>Niveau</th>
@@ -90,7 +90,7 @@
                                             <form action="<?= URLROOT ?>/UsersController/deleteDiploma" method="post">
                                                 <input type="hidden" name="id_user" value="<?php echo $diploma->id_user; ?>">
                                                 <input type="hidden" name="id_diploma" value="<?php echo $diploma->id_diploma; ?>">
-                                                <button type="submit" class="btn">Supprimer</button>
+                                                <button type="submit" class="btn" id="submit-delete">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -46,7 +46,7 @@
                 <div class="languages">
                     <table class="table">
                         <thead>
-                            <tr class="tr">
+                            <tr class="tr" id="tr">
                                 <th>Langues</th>
                                 <th>Niveau</th>
                                 <th>Action</th>
@@ -61,7 +61,7 @@
                                     <form action="<?= URLROOT ?>/UsersController/deleteLanguage" method="post">
                                         <input type="hidden" name="id_user" value="<?php echo $language->id_user; ?>">
                                         <input type="hidden" name="id_language" value="<?php echo $language->id_language; ?>">
-                                        <button type="submit" class="btn">Supprimer</button>
+                                        <button type="submit" class="btn" id="submit-delete">Supprimer</button>
                                     </form>
                                 </td>
                             </tr>

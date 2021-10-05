@@ -1,5 +1,10 @@
 <?php include_once APPROOT . '../views/inc/headerSignUp.php'; ?>
-
+<!-- <?php echo '<pre>'; ?>
+<?php var_dump($data); ?>
+<?php echo '</pre>'; ?>
+<?php echo '<pre>'; ?>
+<?php var_dump($_SESSION); ?>
+<?php echo '</pre>'; ?> -->
 
 <main>
     <div class="container row p-0" id="container">
@@ -19,7 +24,7 @@
                                     <label for="email">Entrer votre adresse Email d'authentification: <span class="text-danger">*</span></label>
                                 </td>
                                 <td class="input">
-                                    <input type="email" name="email" id="email" <?php if(!empty($data1)) { ?> value="<?php echo $data1->email; ?>" <?php }else { ?> value="<?php echo $data->email; ?>" <?php } ?>>
+                                    <input type="email" name="email" id="email" <?php if(!empty($data1)) { ?> value="<?php echo $data1->email; ?>" <?php }else { ?> value="<?php echo $data['email']->email; ?>" <?php } ?>>
                                 </td>
                             </tr>
                             <tr class="dark">

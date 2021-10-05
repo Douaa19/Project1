@@ -92,7 +92,7 @@
                 <div class="experiences">
                     <table class="table">
                         <thead>
-                            <tr class="tr">
+                            <tr class="tr" id="tr">
                                 <th>Date début</th>
                                 <th>Date fin</th>
                                 <th>Société</th>
@@ -113,7 +113,7 @@
                                     <form action="<?= URLROOT ?>/UsersController/deleteExperience" method="post">
                                         <input type="hidden" name="id_user" value="<?php echo $experience->id_user; ?>">
                                         <input type="hidden" name="id_experience" value="<?php echo $experience->id_experience; ?>">
-                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        <button type="submit" class="btn" id="submit-delete">Supprimer</button>
                                     </form>
                                 </td>
                             </tr>

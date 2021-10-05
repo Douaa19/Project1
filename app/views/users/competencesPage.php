@@ -38,7 +38,7 @@
                 <div class="competences">
                     <table class="table">
                         <thead>
-                            <tr class="tr">
+                            <tr class="tr" id="tr">
                                 <th>Competence</th>
                                 <th>Action</th>
                             </tr>
@@ -51,7 +51,7 @@
                                     <form action="<?= URLROOT ?>/UsersController/deleteCompetence" method="post">
                                         <input type="hidden" name="id_user" value="<?php echo $competence->id_user; ?>">
                                         <input type="hidden" name="id_competence" value="<?php echo $competence->id_competence; ?>">
-                                        <button type="submit" class="btn">Supprimer</button>
+                                        <button type="submit" class="btn" id="submit-delete">Supprimer</button>
                                     </form>
                                 </td>
                             </tr>
@@ -61,8 +61,7 @@
                     <form action="<?= URLROOT ?>/UsersController/infosLogin" method="post">
                         <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                         <div class="submit">
-                            <button type="submit" class="btn" id="btn">Suivant
-                            </button>
+                            <button type="submit" class="btn" id="btn">Suivant</button>
                         </div>
                     </form>
                 </div>

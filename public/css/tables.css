@@ -85,7 +85,7 @@ main .container .content .form .diplomas, .experiences, .languages, .competences
     margin: 1rem 0;
 }
 
-main .container .content .form .diplomas, .experiences, .languages, .competences .table thead .tr {
+#tr {
     background-color: #2273B9;
     color: whitesmoke;
 }
@@ -99,13 +99,13 @@ main .container .content .form .diplomas, .experiences, .languages, .competences
     border-bottom: #2273B9 solid;
 }
 
-main .container .content .form .diplomas, .experiences, .languages, .competences .table tbody tr .user form .btn{
+#submit-delete{
     color: whitesmoke;
     background-color: #F96D6D;
     outline: none;
 }
 
-main .container .content .form .diplomas, .experiences, .languages, .competences .table tbody tr .user form .btn:hover{
+#submit-delete:hover{
     color: #f35151;
     background-color: #f59494;
 }

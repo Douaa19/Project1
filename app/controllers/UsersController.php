@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         if (!empty($data['email']) && !empty($data['password'])) {
             $verifyEmail = $this->userModel->checkUserEmail($data);
-            if ($verifyEmail->email == $data['email']) {
+            if ($verifyEmail) {
                 $verifyPassword = $this->userModel->checkUserPassword($data);
 
                 if ($verifyPassword == 1) {
@@ -571,8 +571,8 @@ class UsersController extends Controller
             'error_message' => ''
         ];
         $id_user = ['id_user' => $_POST['id_user']];
-        $email = $this->userModel->getEmail($id_user);
-        $this->view('users/infosLogin', $email);
+        $data['email'] = $this->userModel->getEmail($id_user);
+        $this->view('users/infosLogin', $data);
     }
 
 
