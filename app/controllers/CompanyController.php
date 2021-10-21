@@ -174,12 +174,12 @@ class CompanyController extends Controller {
             $email = $this->companyModel->checkEmail($data);
             if ($email) {
                 $verifyPassword = $this->companyModel->checkCompanyPassword($data);
-
+                
                 if ($verifyPassword == 1) {
-                    $company = $this->companyModel->getCompanyByEmail($data);
+                    $company = $this->companyModel->getCompany($data);
                     $this->session->setSession('id_company',$company->id);
                     $this->session->setSession('email',$company->email);
-                    // header('Location: ' . URLROOT . '/CompanyController/getOffres');
+                    header('Location: ' . URLROOT . '/CompanyController/homePage');
                 }else {
                     $data['error_password'] = "Le mot de passe est incorrect";
                     $email = $this->companyModel->checkEmail($data);
@@ -192,10 +192,21 @@ class CompanyController extends Controller {
         }else {
             $this->view('company/index', $data);
         }
+    }
 
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
+
+    // Go To Home Page
+    public function homePage() {
+        $this->view('company/homePage');
+    }
+
+
+    // Logout Company
+    public function logoutCompany() {
+
+        $this->session->unsetSession('id_company');
+        $this->session->unsetSession('email');
+        $this->view('company/index');
     }
 
 }

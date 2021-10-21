@@ -57,21 +57,26 @@ class company
 
     // Check The Informations For Login System
     public function getCompany($data) {
-        
+        $this->db->query("SELECT * FROM company WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $company = $this->db->single();
+
+        if ($company) {
+            return $company;
+        }else {
+            return false;
+        }
     }
 
 
     // Check Password Company
     public function checkCompanyPassword($data) {
-        var_dump($data);
-        die();
         $this->db->query("SELECT company.password FROM company WHERE email = :email");
         $this->db->bind(':email', $data['email']);
 
         $password = $this->db->single();
         $hashed_password = $password->password;
-        var_dump($hashed_password);
-        die();
         
         if (password_verify($data['password'], $hashed_password)) {
             return true;

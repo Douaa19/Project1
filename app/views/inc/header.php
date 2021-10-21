@@ -67,6 +67,12 @@
                     <a class="nav-link" href="<?= URLROOT ?>/UsersController/logoutUser">Déconnexion</a>
                 </li>
                 <?php } ?>
+                <?php
+                if(isset($_SESSION['id_company'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= URLROOT ?>/CompanyController/logoutCompany">Déconnexion</a>
+                </li>
+                <?php } ?>
             </ul>
         </div>
     </header>

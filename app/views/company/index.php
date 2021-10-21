@@ -1,10 +1,6 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
 
-<!-- <?php
-    echo '<pre>';
-    var_dump($data);
-    echo '</pre>';
-?> -->
+
 
 <main>
     <div class="container row p-0">
