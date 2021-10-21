@@ -141,7 +141,7 @@ class CompanyController extends Controller {
 
 
     // Login Company
-    public function login() {
+    public function loginCompany() {
         $data = [
             'email' => $_POST['email'],
             'password' => $_POST['password'],
@@ -149,6 +149,49 @@ class CompanyController extends Controller {
             'error_password' => '',
             'error_message' => ''
         ];
+        
+
+        if (empty($data['email'])) {
+            $data['error_email'] = "Ecrir votre adresse email s'il vous plaît";
+        }
+        if (empty($data['password'])) {
+            $data['error_password'] = "Ecrir votre adresse mot de passe s'il vous plaît";
+        }
+
+        if (empty($data['password']) && !empty($data['email'])) {
+
+            $email = $this->companyModel->checkEmail($data);
+            if ($email) {
+                $data['existe_email'] = "L'adresse email est enregisté";
+                $this->view('company/index', $data);
+            }else {
+                $data['error_email'] = "L'adresse email n'existe pas";
+                $this->view('company/index', $data);
+            }
+        }
+
+        if (!empty($data['email']) && !empty($data['password'])) {
+            $email = $this->companyModel->checkEmail($data);
+            if ($email) {
+                $verifyPassword = $this->companyModel->checkCompanyPassword($data);
+
+                if ($verifyPassword == 1) {
+                    $company = $this->companyModel->getCompanyByEmail($data);
+                    $this->session->setSession('id_company',$company->id);
+                    $this->session->setSession('email',$company->email);
+                    // header('Location: ' . URLROOT . '/CompanyController/getOffres');
+                }else {
+                    $data['error_password'] = "Le mot de passe est incorrect";
+                    $email = $this->companyModel->checkEmail($data);
+                    $this->view('company/index', $data, $email);
+                }
+            }else {
+                $data['error_email'] = "L'adresse email n'existe pas";
+                $this->view('company/index', $data);
+            }
+        }else {
+            $this->view('company/index', $data);
+        }
 
         // echo '<pre>';
         // var_dump($data);
