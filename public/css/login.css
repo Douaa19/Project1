@@ -1,3 +1,5 @@
+
+
 main .container {
     display: flex;
     justify-content: center;
@@ -20,6 +22,8 @@ main .container .contents .h1 {
     font-size: 25px;
     padding: 0 2rem 2rem;
     margin-bottom: 0;
+    color: black;
+    font-weight: 400;
 }
 
 main .container .contents form {
@@ -35,13 +39,15 @@ main .container .contents form #infos {
 
 main .container .contents form #infos label {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
     width: 50%;
+    color: black;
 }
 
 main .container .contents form #infos input {
     width: 80%;
     border: #2273B9 1px solid;
+    font-weight: 100;
 }
 
 main .container .contents form .button {

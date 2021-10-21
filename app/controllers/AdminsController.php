@@ -94,7 +94,7 @@ class AdminsController extends Controller
             $this->view('admin/dashboard', $users);
         }else {
             $data['error_message'] = "Il y a un erreur dans cette page";
-            $this->view('admin/dashbord', $data);
+            $this->view('admin/dashboard', $data);
         }
     }
 

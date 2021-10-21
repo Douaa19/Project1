@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 /* Style For MainsAdmin And Dashboard */
 main .container {
     margin-top: 2rem;
@@ -33,12 +36,14 @@ main .container .content .addButton .btn:hover {
 
 main .container .content .cards .card {
     padding: 0.5rem;
-    margin: 0 2.5rem 2rem 2.5rem
+    margin: 0 2.5rem 2rem 2.5rem;
+    color: black;
 }
 
 main .container .content .cards .card .group {
     padding: 0.5rem;
     font-size: 14px;
+    font-weight: 100;
 }
 
 main .container .content .cards .card .group .title {
@@ -59,6 +64,11 @@ main .container .content .cards .card .tooGroups {
 
 main .container .content .cards .card .group .T {
     font-weight: 500;
+    color: #0d76d1;
+}
+
+main .container .content .cards .card .group .value {
+    font-weight: 100;
 }
 
 main .container .content .cards .card form .btn {

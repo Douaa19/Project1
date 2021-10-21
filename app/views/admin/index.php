@@ -4,7 +4,7 @@
         <div class="container row p-0">
             <div class="vid col-2 p-0"></div>
             <div class="contents col-10">
-                <h1 class="h1">se connecter Admin</h1>
+                <h1 class="h1">Se connecter Admin</h1>
                 <form action="<?php echo URLROOT; ?>/AdminsController/loginSuperAdmin" method="post">
                     <?php if(!empty($data['error_message'])) ?><h6 class="text-danger"><?php echo $data['error_message']; ?></h6>
                     <div class="email" id="infos">

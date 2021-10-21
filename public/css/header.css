@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
 }
 
 body {
@@ -53,7 +54,7 @@ header .container .nav-item a {
     text-decoration: none;
     font-weight: bold;
     font-size: medium;
-    padding: 0.5rem;
+    padding: 0.4rem
 }
 
 header .container ul .nav-item {
