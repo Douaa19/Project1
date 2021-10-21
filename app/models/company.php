@@ -11,7 +11,7 @@ class company
 
     // 
     public function addCompany($data) {
-        $this->db->query("INSERT INTO `company`(`raison_sociale`, `activite`, `effectif`, `adresse_sociale`, `zip_code`, `city`, `phone`, `rc`, `ice`, `cnss`, `forme_juridique`, `nom_dirigeant`, `rib`) VALUES (:raison_sociale, :activite, :effectif, :adresse_sociale, :zip_code, :city, :phone, :rc, :ice, :cnss, :forme_juridique, :nom_dirigeant, :rib)");
+        $this->db->query("INSERT INTO `company`(`raison_sociale`, `activite`, `effectif`, `adresse_sociale`, `zip_code`, `city`, `phone`, `email`, `rc`, `ice`, `cnss`, `forme_juridique`, `nom_dirigeant`, `rib`) VALUES (:raison_sociale, :activite, :effectif, :adresse_sociale, :zip_code, :city, :phone, :email, :rc, :ice, :cnss, :forme_juridique, :nom_dirigeant, :rib)");
 
         $this->db->bind(':raison_sociale', $data['raison_sociale']);
         $this->db->bind(':activite', $data['activite']);
@@ -20,6 +20,7 @@ class company
         $this->db->bind(':zip_code', $data['zip_code']);
         $this->db->bind(':city', $data['city']);
         $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':email', $data['email']);
         $this->db->bind(':rc', $data['rc']);
         $this->db->bind(':ice', $data['ice']);
         $this->db->bind(':cnss', $data['cnss']);
@@ -29,17 +30,28 @@ class company
 
         // Execute The Statment
         $insert = $this->db->execute();
-
+        
         if ($insert) {
             return $insert;
         }else {
             return false;
         }
 
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre>';
-        // die();
+    }
+
+
+    // Check Email Company If Exists
+    public function checkEmail($data) {
+        $this->db->query("SELECT * FROM company WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+
+        $email = $this->db->single();
+
+        if ($email) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
 }

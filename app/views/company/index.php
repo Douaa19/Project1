@@ -6,7 +6,7 @@
         <div class="contents col-10">
             <h1 class="h1">Se connecter L'entreprise</h1>
             <form action="<?php echo URLROOT ?>/CompenyCotroller/loginCompeny" method="post">
-                <h6 class="text-danger"></h6>
+                <?php if(isset($data['error_message'])) : ?><h6 class="text-danger"><?= $data['error_message']; ?></h6><?php endif; ?>
                 <div class="email" id="infos">
                     <label for="floatingInput">Email address</label>
                     <input type="email" name="email" class="form-control" id="floatingInput" value="">

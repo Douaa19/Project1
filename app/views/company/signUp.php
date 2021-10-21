@@ -68,10 +68,18 @@
                                 <label for="phone" <?php if(!empty($data['error_phone'])) : ?> class="text-danger" <?php endif; ?>>Numéro de téléphone</label>
                             </td>
                             <td class="input">
-                                <input type="text" name="phone" id="phone">
+                                <input type="tel" name="phone" id="phone">
                             </td>
                         </tr>
                         <tr class="dark">
+                            <td class="row">
+                                <label for="email" <?php if(!empty($data['error_email'])) : ?> class="text-danger" <?php endif; ?>>Adresse email</label>
+                            </td>
+                            <td class="input">
+                                <input type="email" name="email" id="email">
+                            </td>
+                        </tr>
+                        <tr class="light">
                             <td class="row">
                                 <label for="rc" <?php if(!empty($data['error_rc'])) : ?> class="text-danger" <?php endif; ?>>RC</label>
                             </td>
@@ -79,7 +87,7 @@
                                 <input type="text" name="rc" id="rc">
                             </td>
                         </tr>
-                        <tr class="light">
+                        <tr class="dark">
                             <td class="row">
                                 <label for="ice" <?php if(!empty($data['error_ice'])) : ?> class="text-danger" <?php endif; ?>>ICE</label>
                             </td>
@@ -87,7 +95,7 @@
                                 <input type="text" name="ice" id="ice">
                             </td>
                         </tr>
-                        <tr class="dark">
+                        <tr class="light">
                             <td class="row">
                                 <label for="cnss" <?php if(!empty($data['error_cnss'])) : ?> class="text-danger" <?php endif; ?>>CNSS</label>
                             </td>
@@ -95,7 +103,7 @@
                                 <input type="text" name="cnss" id="cnss">
                             </td>
                         </tr>
-                        <tr class="light">
+                        <tr class="dark">
                             <td class="row">
                                 <label for="forme_juridique" <?php if(!empty($data['error_forme_juridique'])) : ?> class="text-danger" <?php endif; ?>>Forme juridique</label>
                             </td>
@@ -103,7 +111,7 @@
                                 <input type="text" name="forme_juridique" id="forme_juridique">
                             </td>
                         </tr>
-                        <tr class="dark">
+                        <tr class="light">
                             <td class="row">
                                 <label for="nom_dirigeant" <?php if(!empty($data['error_nom_dirigeant'])) : ?> class="text-danger" <?php endif; ?>>Nom du dirigeant</label>
                             </td>
@@ -111,7 +119,7 @@
                                 <input type="text" name="nom_dirigeant" id="nom_dirigeant">
                             </td>
                         </tr>
-                        <tr class="light">
+                        <tr class="dark">
                             <td class="row">
                                 <label for="rib" <?php if(!empty($data['error_rib'])) : ?> class="text-danger" <?php endif; ?>>RIB</label>
                             </td>
@@ -119,7 +127,7 @@
                                 <input type="text" name="rib" id="rib">
                             </td>
                         </tr>
-                        <tr class="dark">
+                        <tr class="light">
                             <td></td>
                             <td class="button">
                                 <div class="submit">
