@@ -11,7 +11,7 @@ class company
 
     // 
     public function addCompany($data) {
-        $this->db->query("INSERT INTO `company`(`raison_sociale`, `activite`, `effectif`, `adresse_sociale`, `zip_code`, `city`, `phone`, `email`, `rc`, `ice`, `cnss`, `forme_juridique`, `nom_dirigeant`, `rib`) VALUES (:raison_sociale, :activite, :effectif, :adresse_sociale, :zip_code, :city, :phone, :email, :rc, :ice, :cnss, :forme_juridique, :nom_dirigeant, :rib)");
+        $this->db->query("INSERT INTO `company`(`raison_sociale`, `activite`, `effectif`, `adresse_sociale`, `zip_code`, `city`, `phone`, `email`, `rc`, `ice`, `cnss`, `forme_juridique`, `nom_dirigeant`, `rib`, `password`) VALUES (:raison_sociale, :activite, :effectif, :adresse_sociale, :zip_code, :city, :phone, :email, :rc, :ice, :cnss, :forme_juridique, :nom_dirigeant, :rib, :password)");
 
         $this->db->bind(':raison_sociale', $data['raison_sociale']);
         $this->db->bind(':activite', $data['activite']);
@@ -27,6 +27,7 @@ class company
         $this->db->bind(':forme_juridique', $data['forme_juridique']);
         $this->db->bind(':nom_dirigeant', $data['nom_dirigeant']);
         $this->db->bind(':rib', $data['rib']);
+        $this->db->bind(':password', $data['safePassword']);
 
         // Execute The Statment
         $insert = $this->db->execute();
