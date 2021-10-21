@@ -25,7 +25,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="activite">Activité</label>
+                                <label for="activite" <?php if(!empty($data['error_activite'])) : ?> class="text-danger" <?php endif; ?>>Activité</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="activite" id="activite">
@@ -33,7 +33,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="effectif">Effectif</label>
+                                <label for="effectif" <?php if(!empty($data['error_effectif'])) : ?> class="text-danger" <?php endif; ?>>Effectif</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="effectif" id="effectif">
@@ -41,7 +41,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="adresse_sociale">Adresse sociale</label>
+                                <label for="adresse_sociale" <?php if(!empty($data['error_adresse_sociale'])) : ?> class="text-danger" <?php endif; ?>>Adresse sociale</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="adresse_sociale" id="adresse_sociale">
@@ -49,7 +49,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="zip_code">Code postale</label>
+                                <label for="zip_code" <?php if(!empty($data['error_zip_code'])) : ?> class="text-danger" <?php endif; ?>>Code postale</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="zip_code" id="zip_code">
@@ -57,7 +57,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="city">Ville</label>
+                                <label for="city" <?php if(!empty($data['error_city'])) : ?> class="text-danger" <?php endif; ?>>Ville</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="city" id="city">
@@ -65,7 +65,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="phone">Numéro de téléphone</label>
+                                <label for="phone" <?php if(!empty($data['error_phone'])) : ?> class="text-danger" <?php endif; ?>>Numéro de téléphone</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="phone" id="phone">
@@ -73,7 +73,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="rc">RC</label>
+                                <label for="rc" <?php if(!empty($data['error_rc'])) : ?> class="text-danger" <?php endif; ?>>RC</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="rc" id="rc">
@@ -81,7 +81,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="ice">ICE</label>
+                                <label for="ice" <?php if(!empty($data['error_ice'])) : ?> class="text-danger" <?php endif; ?>>ICE</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="ice" id="ice">
@@ -89,7 +89,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="cnss">CNSS</label>
+                                <label for="cnss" <?php if(!empty($data['error_cnss'])) : ?> class="text-danger" <?php endif; ?>>CNSS</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="cnss" id="cnss">
@@ -97,7 +97,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="forme_juridique">Forme juridique</label>
+                                <label for="forme_juridique" <?php if(!empty($data['error_forme_juridique'])) : ?> class="text-danger" <?php endif; ?>>Forme juridique</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="forme_juridique" id="forme_juridique">
@@ -105,7 +105,7 @@
                         </tr>
                         <tr class="dark">
                             <td class="row">
-                                <label for="nom_dirigeant">Nom du dirigeant</label>
+                                <label for="nom_dirigeant" <?php if(!empty($data['error_nom_dirigeant'])) : ?> class="text-danger" <?php endif; ?>>Nom du dirigeant</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="nom_dirigeant" id="nom_dirigeant">
@@ -113,7 +113,7 @@
                         </tr>
                         <tr class="light">
                             <td class="row">
-                                <label for="rib">RIB</label>
+                                <label for="rib" <?php if(!empty($data['error_rib'])) : ?> class="text-danger" <?php endif; ?>>RIB</label>
                             </td>
                             <td class="input">
                                 <input type="text" name="rib" id="rib">
