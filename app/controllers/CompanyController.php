@@ -210,15 +210,6 @@ class CompanyController extends Controller {
     }
 
 
-    // Go To The Dashboard Of Companys
-    public function companys() {
-        $companys = $this->companyModel->getCompanys();
-        if ($companys) {
-            $this->view('admin/companys', $companys);
-        }else {
-            $data['error_message'] = "Data empty!";
-            $this->view('admin/companys', $data);
-        }
-    }
+    
 
 }

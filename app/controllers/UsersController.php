@@ -217,8 +217,7 @@ class UsersController extends Controller
 
         $fileExt= explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
-        // print_r($fileExt);
-        // die();
+        
         $allowed = array('doc','docx','pdf');
 
         if (in_array($fileActualExt, $allowed)) {

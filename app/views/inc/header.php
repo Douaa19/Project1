@@ -58,7 +58,7 @@
                         <button class="dropbtn">Dashboard</button>
                         <div class="dropdown-content">
                             <a href="<?= URLROOT ?>/AdminsController/dashboard">Condidats</a>
-                            <a href="<?= URLROOT ?>/CompanyController/companys">Entreprises</a>
+                            <a href="<?= URLROOT ?>/AdminsController/companys">Entreprises</a>
                         </div>
                     </div> 
                 <!-- <li class="nav-item m-0">

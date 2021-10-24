@@ -84,4 +84,25 @@ class admin
             return false;
         }
     }
+
+
+    // Get All The Companys From Database
+    public function getCompanys() {
+        $this->db->query("SELECT * FROM company");
+
+        // Execute The Statement
+        $companys = $this->db->resultSet();
+        if ($companys) {
+            return $companys;
+        }else {
+            return false;
+        }
+    }
+
+
+    // 
+    public function insertInforForCompany($data) {
+        var_dump($data);
+        die();
+    }
 }
