@@ -86,6 +86,18 @@ class company
     }
 
 
-    
+    // Get Files About One Compay
+    public function getFiles($id_company) {
+        $this->db->query("SELECT * FROM filescompany WHERE id_company = :id_company");
+        $this->db->bind(':id_company', $id_company);
+
+        // Execute The Statement
+        $files = $this->db->resultSet();
+        if ($files) {
+            return $files;
+        }else {
+            return false;
+        }
+    }
 
 }

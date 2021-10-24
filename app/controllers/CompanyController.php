@@ -177,7 +177,7 @@ class CompanyController extends Controller {
                 
                 if ($verifyPassword == 1) {
                     $company = $this->companyModel->getCompany($data);
-                    $this->session->setSession('id_company',$company->id);
+                    $this->session->setSession('id_company',$company->id_company);
                     $this->session->setSession('email',$company->email);
                     header('Location: ' . URLROOT . '/CompanyController/homePage');
                 }else {
@@ -197,7 +197,15 @@ class CompanyController extends Controller {
 
     // Go To Home Page
     public function homePage() {
-        $this->view('company/homePage');
+        $id_company = $_SESSION['id_company'];
+
+        $files = $this->companyModel->getFiles($id_company);
+        if ($files) {
+            $this->view('company/homePage', $files);
+        }else {
+            $data['error_message'] = "Il n'y a pas des informations";
+            $this->view('company/homePage', $data);
+        }
     }
 
 

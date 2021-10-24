@@ -125,7 +125,7 @@ class admin
         $this->db->query("SELECT * FROM company,filescompany WHERE company.id_company = filescompany.id_company");
 
         // Execute The Statement 
-        $company = $this->db->single();
+        $company = $this->db->resultSet();
         if ($company) {
             return $company;
         }else {

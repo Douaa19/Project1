@@ -1,6 +1,5 @@
 <?php include_once APPROOT . '../views/inc/header.php'; ?>
 
-
 <main>
     <div class="container row p-0">
         <div class="vid col-2 p-0"></div>
@@ -16,24 +15,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($data as $user) : ?>
-                    <tr>
-                        <td><?= $user->lName; ?></td>
-                        <td><?= $user->fName; ?></td>
-                        <td><?= $user->email; ?></td>
-                        <td><a id="cv" href="<?= URLROOT?>/uploads/<?= $user->name_file; ?>"><?= $user->name_file; ?></a></td>
-                        <td>
-                            <div id="more">
-                                <form action="<?= URLROOT ?>/AminsController/addMore" method="post">
-                                    <input type="hidden" name="id_user" value="<?= $user->id_user; ?>">
-                                    <button type="submit" class="addMore">Ajouter plus</button>
-                                </form>
-                                <form action="<?= URLROOT ?>/AminsController/viewMore" method="post">
-                                    <input type="hidden" name="id_user" value="<?= $user->id_user; ?>">
-                                    <button type="submit" class="viewMore">Voir plus</button>
-                                </form>
-                            </div>
-                        </td>
+                    <?php foreach($data as $company) : ?>
+                        <tr>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->contract; ?>" class="text-uppercase text-decoration-none">contract</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->contract_salarie; ?>" class="text-uppercase text-decoration-none">contract salarie</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->facture; ?>" class="text-uppercase text-decoration-none">facture</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->liste_personnel; ?>" class="text-uppercase text-decoration-none">liste du personnel</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -23,21 +23,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                <?php foreach($data as $company) : ?>
                     <tr>
-                        <td><?= $data->raison_sociale; ?></td>
-                        <td><?= $data->effectif; ?></td>
-                        <td><?= $data->ice; ?></td>
-                        <td><?= $data->cnss; ?></td>
-                        <td><?= $data->forme_juridique; ?></td>
-                        <td><?= $data->nom_dirigeant; ?></td>
-                        <td><?= $data->rib; ?></td>
-                        <td><a href="<?= URLROOT ?>/uploads/<?= $data->contract; ?>" class="text-uppercase text-decoration-none">contract</a></td>
-                        <td><a href="<?= URLROOT ?>/uploads/<?= $data->contract_salarie; ?>" class="text-uppercase text-decoration-none">contract salarie</a></td>
-                        <td><a href="<?= URLROOT ?>/uploads/<?= $data->facture; ?>" class="text-uppercase text-decoration-none">facture</a></td>
-                        <td><a href="<?= URLROOT ?>/uploads/<?= $data->liste_personnel; ?>" class="text-uppercase text-decoration-none">liste personnel</a></td>
+                        <td><?= $company->raison_sociale; ?></td>
+                        <td><?= $company->effectif; ?></td>
+                        <td><?= $company->ice; ?></td>
+                        <td><?= $company->cnss; ?></td>
+                        <td><?= $company->forme_juridique; ?></td>
+                        <td><?= $company->nom_dirigeant; ?></td>
+                        <td><?= $company->rib; ?></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->contract; ?>" class="text-uppercase text-decoration-none">contract</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->contract_salarie; ?>" class="text-uppercase text-decoration-none">contract salarie</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->facture; ?>" class="text-uppercase text-decoration-none">facture</a></td>
+                        <td><a href="<?= URLROOT ?>/uploads/<?= $company->liste_personnel; ?>" class="text-uppercase text-decoration-none">liste personnel</a></td>
                     </tr>
-
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
