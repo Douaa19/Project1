@@ -250,7 +250,11 @@ class AdminsController extends Controller
             if ($uploadContract && $uploadContract_salarie && $uploadFacture && $uploadListe_personnel) {
                 $insert = $this->adminModel->insertInforForCompany($data);
                 if ($insert) {
-                    echo true;
+                    $companys = $this->adminModel->getCompanys();
+                    $this->view('admin/companys', $companys);
+                }else {
+                    $data['error_message'] = "Les informaions ne sont pas enregistrés";
+                    $this->view('admin/companys', $data);
                 }
             }
         }else {

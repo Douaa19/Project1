@@ -102,7 +102,20 @@ class admin
 
     // 
     public function insertInforForCompany($data) {
-        var_dump($data);
-        die();
+        $this->db->query("INSERT INTO `filescompany`(`contract`, `contract_salarie`, `facture`, `liste_personnel`, `id_company`) VALUES (:contract, :contract_salarie, :facture, :liste_personnel, :id_company)");
+
+        $this->db->bind(':contract', $data['contract']);
+        $this->db->bind(':contract_salarie', $data['contract_salarie']);
+        $this->db->bind(':facture', $data['facture']);
+        $this->db->bind(':liste_personnel', $data['liste_personnel']);
+        $this->db->bind(':id_company', $data['id_company']);
+
+        // Execute The Statement
+        $result = $this->db->execute();
+        if ($result) {
+            return $result;
+        }else {
+            return false;
+        }
     }
 }
