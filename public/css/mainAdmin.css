@@ -181,3 +181,16 @@ main .container .content .table {
     background-color: #059c1e;
 }
 /* Style For Dashboard Page */
+
+/* Style Buttons In Homa Page Company */
+#download {
+    background-color: none;
+    text-transform: capitalize;
+    color: #2273B9;
+    border: none;
+}
+
+#download:hover{
+    color: #034c8b;
+}
+/* Style Buttons In Homa Page Company */
