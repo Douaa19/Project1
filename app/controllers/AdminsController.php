@@ -412,6 +412,19 @@ class AdminsController extends Controller
     }
 
 
+    // Go To View All Informations For Company
+    public function viewMoreInfosCompany() {
+        $id_company = $_POST['id_company'];
+        $company = $this->adminModel->getCompany($id_company);
+        if ($company) {
+            $this->view('admin/viewMoreInfosCompany', $company);
+        }else {
+            $data['error_message'] = "Il n'y a plus des informations";
+            $this->view('admin/viewMoreInfosCompany', $data);
+        }
+    }
+
+
 
 
 

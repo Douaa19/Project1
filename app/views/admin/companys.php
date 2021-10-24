@@ -15,7 +15,7 @@
                         <th scope="col-3">Ville</th>
                         <th scope="col-3">Numéro de Téléphone</th>
                         <th scope="col-3">Email</th>
-                        <th scope="col-3">Email</th>
+                        <th scope="col-3">Plus</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,11 +30,11 @@
                         <td>
                             <div id="more">
                                 <form action="<?= URLROOT ?>/AminsController/addMoreInfosCompany" method="post">
-                                    <input type="hidden" name="id_company" value="<?= $company->id; ?>">
+                                    <input type="hidden" name="id_company" value="<?= $company->id_company; ?>">
                                     <button type="submit" class="addMore">Ajouter plus</button>
                                 </form>
                                 <form action="<?= URLROOT ?>/AminsController/viewMoreInfosCompany" method="post">
-                                    <input type="hidden" name="id_company" value="<?= $company->id; ?>">
+                                    <input type="hidden" name="id_company" value="<?= $company->id_company; ?>">
                                     <button type="submit" class="viewMore">Voir plus</button>
                                 </form>
                             </div>

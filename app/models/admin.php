@@ -118,4 +118,18 @@ class admin
             return false;
         }
     }
+
+
+    // Get One Company 
+    public function getCompany($id_company) {
+        $this->db->query("SELECT * FROM company,filescompany WHERE company.id_company = filescompany.id_company");
+
+        // Execute The Statement 
+        $company = $this->db->single();
+        if ($company) {
+            return $company;
+        }else {
+            return false;
+        }
+    }
 }
