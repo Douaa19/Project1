@@ -280,7 +280,9 @@ class AdminsController extends Controller
         if (in_array($contractActualExt, $allowed)) {
             if ($contractError === 0) {
                 if ($contractSize < 100000000) {
-                    $contractNameNew = uniqid($contractExt[0], true).".".$contractActualExt;
+                    $contractNameNew = $contractName;
+                    // var_dump($contractNameNew);
+                    // die();
                     $contractDestination = "C:\\xampp\htdocs\larmoProject1\public\uploads\\".$contractNameNew;
 
                     if (file_exists($contractDestination . $contractTmpName)) {
@@ -425,39 +427,22 @@ class AdminsController extends Controller
     }
 
 
+    // Download CV
+    public function download() {
+        $file = $_POST['file'];
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/force-download');
+        header("Content-Disposition: attachment; filename=\"" . basename($file) . "\";");
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        ob_clean();
+        flush();
+        readfile(URLROOT . "/uploads/".$file); //showing the path to the server where the file is to be download
+        exit;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        header('Location: ' . URLROOT . '/AdminsController/dashboard');
+    }
 }
