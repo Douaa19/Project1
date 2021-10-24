@@ -5,7 +5,7 @@
     <div class="container row p-0">
         <div class="vid col-2 p-0"></div>
         <div class="content col-10 p-0">
-            <h2 class="h2">dashboard</h2>
+            <h2 class="h2">condidats</h2>
             <table class="table">
                 <thead class="thead">
                     <tr>

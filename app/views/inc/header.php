@@ -22,7 +22,7 @@
     <?php if(isset($_SESSION['id_user'])) { ?>
         <link rel="stylesheet" href="<?= URLROOT?>/css/main.css"> 
     <?php } ?>
-    <?php if(isset($_SESSION['id_admin'])) { ?>
+    <?php if(isset($_SESSION['id_admin']) || isset($_SESSION['id_company'])) { ?>
         <link rel="stylesheet" href="<?= URLROOT?>/css/mainAdmin.css"> 
     <?php } ?>
 
@@ -54,9 +54,16 @@
                 </li>
                 <?php
                 if(isset($_SESSION['id_admin'])) { ?>
-                <li class="nav-item m-0">
+                    <div class="dropdown">
+                        <button class="dropbtn">Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href="<?= URLROOT ?>/AdminsController/dashboard">Condidats</a>
+                            <a href="<?= URLROOT ?>/CompanyController/companys">Entreprises</a>
+                        </div>
+                    </div> 
+                <!-- <li class="nav-item m-0">
                     <a class="nav-link" href="<?= URLROOT ?>/AdminsController/dashboard">Dashboard</a>
-                </li>
+                </li> -->
                 <li class="nav-item m-0">
                     <a class="nav-link" href="<?= URLROOT ?>/AdminsController/logout">Déconnexion</a>
                 </li>
