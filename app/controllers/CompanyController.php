@@ -221,16 +221,25 @@ class CompanyController extends Controller {
     // Method For Download Files
     public function download() {
         $file = $_POST['file'];
-        download($file);
-        
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/force-download');
+        header("Content-Disposition: attachment; filename=\"" . basename($file) . "\";");
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        ob_clean();
+        flush();
+        readfile(URLROOT . "/uploads/".$file); //showing the path to the server where the file is to be download
+        exit;
+
+        header('Location: ' . URLROOT . '/CompanyController/homePage');
     }
 
-    // $name= $_GET['nama'];
-    // download($name);
 
-    // function download($name) {
-    //     $file = $nama_fail;
-
+    // Method Download
+    // public function downloadFile($file) {
     //     if (file_exists($file)) {
     //         header('Content-Description: File Transfer');
     //         header('Content-Type: application/octet-stream');
@@ -243,8 +252,9 @@ class CompanyController extends Controller {
     //         ob_clean();
     //         flush();
     //         readfile($file);
-    //         exit;
+    //         exit();
     //     }
     // }
+
 
 }
