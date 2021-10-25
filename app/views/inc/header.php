@@ -55,7 +55,7 @@
                 <?php
                 if(isset($_SESSION['id_admin'])) { ?>
                 <li class="nav-item m-0">
-                    <a href="#">Dashboard</a>
+                    <a href="#" class="nav-link">Dashboard</a>
                     <ul>
                         <li><a href="<?= URLROOT ?>/AdminsController/dashboard">Condidats</a></li>
                         <li><a href="<?= URLROOT ?>/AdminsController/companys">Entreprises</a></li>
