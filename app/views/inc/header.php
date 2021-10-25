@@ -54,16 +54,13 @@
                 </li>
                 <?php
                 if(isset($_SESSION['id_admin'])) { ?>
-                    <div class="dropdown">
-                        <button class="dropbtn">Dashboard</button>
-                        <div class="dropdown-content">
-                            <a href="<?= URLROOT ?>/AdminsController/dashboard">Condidats</a>
-                            <a href="<?= URLROOT ?>/AdminsController/companys">Entreprises</a>
-                        </div>
-                    </div> 
-                <!-- <li class="nav-item m-0">
-                    <a class="nav-link" href="<?= URLROOT ?>/AdminsController/dashboard">Dashboard</a>
-                </li> -->
+                <li class="nav-item m-0">
+                    <a href="#">Dashboard</a>
+                    <ul>
+                        <li><a href="<?= URLROOT ?>/AdminsController/dashboard">Condidats</a></li>
+                        <li><a href="<?= URLROOT ?>/AdminsController/companys">Entreprises</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item m-0">
                     <a class="nav-link" href="<?= URLROOT ?>/AdminsController/logout">Déconnexion</a>
                 </li>
