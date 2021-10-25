@@ -220,21 +220,22 @@ class CompanyController extends Controller {
 
     // Method For Download Files
     public function download() {
-        $file = $_POST['file'];
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/force-download');
-        header("Content-Disposition: attachment; filename=\"" . basename($file) . "\";");
-        header('Content-Transfer-Encoding: binary');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        ob_clean();
-        flush();
-        readfile(URLROOT . "/uploads/".$file); //showing the path to the server where the file is to be download
-        exit;
+        $fileName = basename($_POST['file']);
+        $filePath = "C:\\xampp\htdocs\larmoProject1\public\uploads\\" . $fileName;
+        
 
-        header('Location: ' . URLROOT . '/CompanyController/homePage');
+        if (!empty($fileName) && file_exists($filePath)) {
+            header("Cache-Control: public");
+            header("Content-Description: FIle Transfer");
+            header("Content-Disposition: attachement; filename=$fileName");
+            header("Content-Type: application/zip");
+            header("Content-Transfer-Emcoding: binary");
+            
+            readfile($filePath);
+            exit;
+        }else {
+            echo "This file does not exist.";
+        }
     }
     
 

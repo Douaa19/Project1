@@ -23,12 +23,11 @@
                         <td><?= $user->fName; ?></td>
                         <td><?= $user->email; ?></td>
                         <td>
-                                <form action="<?= URLROOT; ?>/AdminsController/download" method="post">
-                                    <input type="hidden" name="file" value="<?= $user->name_file; ?>">
-                                    <button type="submit" id="download">CV</button>
-                                </form>
-                            </td>
-                        <!-- <td><a id="cv" href="<?= URLROOT?>/uploads/<?= $user->name_file; ?>"><?= $user->name_file; ?></a></td> -->
+                            <form action="<?= URLROOT; ?>/AdminsController/download" method="post">
+                                <input type="hidden" name="file" value="<?= $user->name_file; ?>">
+                                <button type="submit" id="download">CV</button>
+                            </form>
+                        </td>
                         <td>
                             <div id="more">
                                 <form action="<?= URLROOT ?>/AminsController/addMore" method="post">
